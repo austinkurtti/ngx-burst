@@ -65,6 +65,8 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap-utilities.min.css",
               "projects/showcase/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
