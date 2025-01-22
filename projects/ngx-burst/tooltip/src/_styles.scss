@@ -1,0 +1,88 @@
+@use 'sass:math';
+
+@mixin theme() {
+    #ngxb-tooltip-container {
+        height: 100%;
+        pointer-events: none;
+        position: fixed;
+        width: 100%;
+        // z-index: variables.$z-index-tooltip;
+        z-index: 100000;
+
+        .ngxb-tooltip {
+            // background-color: variables.$theme-hoverable-background;
+            background-color: #333;
+            // border-radius: math.div(variables.$base-size, 4);
+            border-radius: math.div(1rem, 4);
+            // color: variables.$theme-hoverable-font-color;
+            color: #fff;
+            // min-width: variables.$base-size;
+            min-width: 1rem;
+            // padding: variables.$base-size;
+            padding: 1rem;
+            position: absolute;
+
+            // For tooltip arrow
+            &:after {
+                border-style: solid;
+                // border-width: variables.$base-size;
+                border-width: 1rem;
+                content: "";
+                position: absolute;
+            }
+
+            &.top:after {
+                // border-color: variables.$theme-hoverable-background transparent transparent transparent;
+                border-color: #333 transparent transparent transparent;
+                left: 50%;
+                top: 100%;
+                transform: translateX(-50%);
+            }
+
+            &.right:after {
+                // border-color: transparent variables.$theme-hoverable-background transparent transparent;
+                border-color: transparent #333 transparent transparent;
+                // left: -(variables.$base-size * 2);
+                left: -(1rem * 2);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &.bottom:after {
+                // border-color: transparent transparent variables.$theme-hoverable-background transparent;
+                border-color: transparent transparent #333 transparent;
+                left: 50%;
+                top: -50%;
+                transform: translateX(-50%);
+            }
+
+            &.left:after {
+                // border-color: transparent transparent transparent variables.$theme-hoverable-background;
+                border-color: transparent transparent transparent #333;
+                left: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (min-width: 0px) {
+            .ngxb-tooltip {
+                max-width: 35%;
+            }
+        }
+
+        // @media (min-width: variables.$breakpoint-tablet) {
+        @media (min-width: 768px) {
+            .ngxb-tooltip {
+                max-width: 25%;
+            }
+        }
+
+        // @media (min-width: variables.$breakpoint-desktop) {
+        @media (min-width: 992px) {
+            .ngxb-tooltip {
+                max-width: 15%;
+            }
+        }
+    }
+}

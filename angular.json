@@ -67,6 +67,9 @@
             "styles": [
               "projects/showcase/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["dist/ngx-burst"]
+            },
             "scripts": []
           },
           "configurations": {

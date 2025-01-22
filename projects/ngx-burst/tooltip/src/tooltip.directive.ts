@@ -2,6 +2,7 @@ import { Directive, ElementRef, HostListener, OnDestroy, Renderer2, inject, inpu
 import { Subscription, timer } from 'rxjs';
 import { TooltipPosition } from './tooltip-position';
 
+// TODO - make this TODO an Issue
 /**
  * TODO - Accessibility
  *
@@ -11,9 +12,9 @@ import { TooltipPosition } from './tooltip-position';
  * make host element tabbable
  */
 @Directive({
-    selector: '[bstTooltip]'
+    selector: '[ngxbTooltip]'
 })
-export class BstTooltipDirective implements OnDestroy {
+export class NgxbTooltipDirective implements OnDestroy {
     public tooltipContent = input.required<string>();
     public tooltipDelay = input(500);
     public tooltipEnabled = input(true);
@@ -26,7 +27,13 @@ export class BstTooltipDirective implements OnDestroy {
     private _unlisteners: Array<() => void> = [];
     private _debounceSubscription: Subscription | null = null;
     private get _tooltipContainerEl(): HTMLDivElement | null {
-        return document.querySelector('#ak-tooltip-container');
+        let el = document.querySelector('#ngxb-tooltip-container');
+        if (!el) {
+            el = <HTMLDivElement>this._renderer.createElement('div');
+            el.id = 'ngxb-tooltip-container';
+            this._renderer.appendChild(document.body, el);
+        }
+        return <HTMLDivElement>el;
     }
 
     // TODO - replace with configurable base size
@@ -56,7 +63,7 @@ export class BstTooltipDirective implements OnDestroy {
             // Create the tooltip element
             this._tooltipEl = <HTMLDivElement>this._renderer.createElement('div');
             this._tooltipEl.innerHTML = this.tooltipContent();
-            this._renderer.addClass(this._tooltipEl, 'ak-tooltip');
+            this._renderer.addClass(this._tooltipEl, 'ngxb-tooltip');
 
             // Render the tooltip by appending it now, that way it's rendered size can be used to better position it
             this._renderer.appendChild(this._tooltipContainerEl, this._tooltipEl);
