@@ -1,5 +1,5 @@
 /**
- * Sub entrypoint ngx-burst/tooltip
+ * Sub entry point ngx-burst/tooltip
  */
 
 export * from './src/tooltip-position';

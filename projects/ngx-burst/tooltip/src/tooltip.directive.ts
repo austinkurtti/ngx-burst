@@ -13,7 +13,7 @@ import { TooltipPosition } from './tooltip-position';
 @Directive({
     selector: '[bstTooltip]'
 })
-export class TooltipDirective implements OnDestroy {
+export class BstTooltipDirective implements OnDestroy {
     public tooltipContent = input.required<string>();
     public tooltipDelay = input(500);
     public tooltipEnabled = input(true);
