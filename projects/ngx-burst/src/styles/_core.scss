@@ -1,15 +1,15 @@
 @use '../../tooltip/src/styles' as tooltip;
 
+@mixin theme-def() {
+    --theme-background-color-primary: #fff;
+    --theme-background-color-secondary: #eaeaea;
+
+    --theme-font-color-primary: #333;
+    --theme-font-color-secondary: #333;
+
+    --theme-accent-color: #19bce0;
+}
+
 @mixin theme() {
-    :root {
-        --theme-background-color-primary: #fff;
-        --theme-background-color-secondary: #eaeaea;
-
-        --theme-font-color-primary: #333;
-        --theme-font-color-secondary: #333;
-
-        --theme-accent-color: #19bce0;
-    }
-
     @include tooltip.theme();
 }

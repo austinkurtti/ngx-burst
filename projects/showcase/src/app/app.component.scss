@@ -4,4 +4,23 @@ h1, h2, h3, h4, h5 {
     margin: 0;
 }
 
-@include ngxb.theme();
+header {
+    background-color: ngxb.$color-ivory;
+}
+
+section {
+    &:not(:first-child) {
+        padding-top: ngxb.$core-size;
+    }
+
+    h2 {
+        margin-bottom: ngxb.$core-size;
+    }
+
+    &#tooltips {
+        span {
+            border: 1px solid ngxb.$color-black;
+            padding: ngxb.$core-size;
+        }
+    }
+}

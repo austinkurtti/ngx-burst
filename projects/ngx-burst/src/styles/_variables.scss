@@ -1,4 +1,22 @@
 // --------------------------------------------------------
-// CORE
+// MEASUREMENTS
 // --------------------------------------------------------
 $core-size                              : 1rem;
+
+
+// --------------------------------------------------------
+// COLORS
+// --------------------------------------------------------
+$color-white                            : #fff;
+$color-ivory                            : #eaeaea;
+$color-gray-100                         : #ddd;
+$color-gray-200                         : #ccc;
+$color-gray-300                         : #bbb;
+$color-gray-400                         : #9c9c9c;
+$color-gray-500                         : #888;
+$color-gray                             : $color-gray-500;
+$color-gray-600                         : #777;
+$color-gray-700                         : #666;
+$color-gray-800                         : #555;
+$color-slate                            : #434343;
+$color-black                            : #333;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
+import { NgxbTooltipDirective, TooltipPosition } from 'ngx-burst/tooltip';
 
 @Component({
     selector: 'app-root',
@@ -9,4 +9,8 @@ import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
         NgxbTooltipDirective
     ]
 })
-export class AppComponent {}
+export class AppComponent {
+    public TooltipPosition = TooltipPosition;
+
+    public tooltipEnabled = true;
+}

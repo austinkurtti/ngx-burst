@@ -1,6 +1,43 @@
-<h1>Welcome to the showcase</h1>
+<header class="container-fluid g-0 py-3">
+    <div class="row g-0">
+        <div class="col px-3">
+            <h1>ngx-burst Showcase</h1>
+        </div>
+    </div>
+</header>
 
-<section>
-    <h2>Tooltip</h2>
-    <span ngxbTooltip [tooltipContent]="'Content here'">Hover me</span>
+<section id="tooltips" class="container g-0">
+    <h2>Tooltips</h2>
+    <h3>Directions</h3>
+    <div class="row g-0 py-5">
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Tooltip on top'">Top</span>
+        </div>
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Tooltip on right'" [tooltipPosition]="TooltipPosition.right">Right</span>
+        </div>
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Tooltip on bottom'" [tooltipPosition]="TooltipPosition.bottom">Bottom</span>
+        </div>
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Tooltip on left'" [tooltipPosition]="TooltipPosition.left">Left</span>
+        </div>
+    </div>
+    <h3>Features</h3>
+    <div class="row g-0 py-5">
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Gotta go fast'" [tooltipDelay]="0">No delay</span>
+        </div>
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Feeling lazy'" [tooltipDelay]="3000">3 second delay</span>
+        </div>
+        <div class="col text-center">
+            <input type="checkbox" [checked]="tooltipEnabled" (change)="tooltipEnabled = !tooltipEnabled">
+            <label class="me-3">Enabled</label>
+            <span ngxbTooltip [tooltipContent]="'Can you see me now?'" [tooltipEnabled]="tooltipEnabled">Enabled/Disabled</span>
+        </div>
+        <div class="col text-center">
+            <span ngxbTooltip [tooltipContent]="'Coming soon!'">Rich content</span>
+        </div>
+    </div>
 </section>
