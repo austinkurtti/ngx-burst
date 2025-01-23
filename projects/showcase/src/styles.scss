@@ -1,8 +1,7 @@
 @use 'ngx-burst' as ngxb;
 
-:root {
-    @include ngxb.theme-def();
-}
+@include ngxb.theme();
+@include ngxb.tooltip-theme();
 
 html {
     font-family: sans-serif;
@@ -12,7 +11,5 @@ html {
     body {
         height: 100%;
         margin: 0;
-
-        @include ngxb.theme();
     }
 }

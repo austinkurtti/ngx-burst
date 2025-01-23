@@ -1,4 +1,4 @@
-export enum TooltipPosition {
+export enum NgxbTooltipPosition {
     top,
     right,
     bottom,

@@ -1,8 +1,17 @@
 @use 'sass:math';
 
-@use '../../src/styles/variables';
+@use '../../src/styles/theme';
+@use '../../src/styles/variables' as vars;
 
 @mixin theme() {
+    :root {
+        @include theme.def('tooltip', (
+            'background-color-primary': vars.$color-black,
+            'font-color-primary': vars.$color-white,
+            'z-index': 100000
+        ));
+    }
+
     #ngxb-tooltip-container {
         height: 100vh;
         left: 0;
@@ -10,54 +19,47 @@
         position: absolute;
         top: 0;
         width: 100%;
-        // z-index: variables.$z-index-tooltip;
-        z-index: 100000;
+        z-index: var(--ngxb-tooltip-z-index);
 
         .ngxb-tooltip {
-            // background-color: variables.$theme-hoverable-background;
-            background-color: #333;
-            border-radius: math.div(variables.$core-size, 4);
-            // color: variables.$theme-hoverable-font-color;
-            color: #fff;
-            min-width: variables.$core-size;
-            padding: variables.$core-size;
+            background-color: var(--ngxb-tooltip-background-color-primary);
+            border-radius: math.div(vars.$core-size, 4);
+            color: var(--ngxb-tooltip-font-color-primary);
+            min-width: vars.$core-size;
+            padding: vars.$core-size;
             position: absolute;
 
             // For tooltip arrow
             &:after {
                 border-style: solid;
-                border-width: variables.$core-size;
+                border-width: vars.$core-size;
                 content: "";
                 position: absolute;
             }
 
             &.top:after {
-                // border-color: variables.$theme-hoverable-background transparent transparent transparent;
-                border-color: #333 transparent transparent transparent;
+                border-color: var(--ngxb-tooltip-background-color-primary) transparent transparent transparent;
                 left: 50%;
                 top: 100%;
                 transform: translateX(-50%);
             }
 
             &.right:after {
-                // border-color: transparent variables.$theme-hoverable-background transparent transparent;
-                border-color: transparent #333 transparent transparent;
-                left: -(variables.$core-size * 2);
+                border-color: transparent var(--ngxb-tooltip-background-color-primary) transparent transparent;
+                left: -(vars.$core-size * 2);
                 top: 50%;
                 transform: translateY(-50%);
             }
 
             &.bottom:after {
-                // border-color: transparent transparent variables.$theme-hoverable-background transparent;
-                border-color: transparent transparent #333 transparent;
+                border-color: transparent transparent var(--ngxb-tooltip-background-color-primary) transparent;
                 left: 50%;
                 top: -50%;
                 transform: translateX(-50%);
             }
 
             &.left:after {
-                // border-color: transparent transparent transparent variables.$theme-hoverable-background;
-                border-color: transparent transparent transparent #333;
+                border-color: transparent transparent transparent var(--ngxb-tooltip-background-color-primary);
                 left: 100%;
                 top: 50%;
                 transform: translateY(-50%);
@@ -70,15 +72,13 @@
             }
         }
 
-        // @media (min-width: variables.$breakpoint-tablet) {
-        @media (min-width: 768px) {
+        @media (min-width: vars.$breakpoint-md) {
             .ngxb-tooltip {
                 max-width: 25%;
             }
         }
 
-        // @media (min-width: variables.$breakpoint-desktop) {
-        @media (min-width: 992px) {
+        @media (min-width: vars.$breakpoint-lg) {
             .ngxb-tooltip {
                 max-width: 15%;
             }

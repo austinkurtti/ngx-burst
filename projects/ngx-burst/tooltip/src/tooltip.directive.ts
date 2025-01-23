@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, OnDestroy, Renderer2, inject, input } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
-import { TooltipPosition } from './tooltip-position';
+import { NgxbTooltipPosition } from './tooltip-position';
 
 // TODO - make this TODO an Issue
 /**
@@ -18,7 +18,7 @@ export class NgxbTooltipDirective implements OnDestroy {
     public tooltipContent = input.required<string>();
     public tooltipDelay = input(500);
     public tooltipEnabled = input(true);
-    public tooltipPosition = input(TooltipPosition.top);
+    public tooltipPosition = input(NgxbTooltipPosition.top);
 
     private _hostElement = inject(ElementRef);
     private _renderer = inject(Renderer2);
@@ -71,28 +71,28 @@ export class NgxbTooltipDirective implements OnDestroy {
             // Position tooltip relative to the host element
             const hostRect = this._hostElement.nativeElement.getBoundingClientRect();
             switch (this.tooltipPosition()) {
-                case TooltipPosition.top:
+                case NgxbTooltipPosition.top:
                     if ((hostRect.y - this._baseSizePx - this._tooltipEl.clientHeight) < 0) {
                         this._positionBottom();
                     } else {
                         this._positionTop();
                     }
                     break;
-                case TooltipPosition.right:
+                case NgxbTooltipPosition.right:
                     if ((hostRect.x + hostRect.width + this._baseSizePx + this._tooltipEl.clientWidth) > document.body.clientWidth) {
                         this._positionLeft();
                     } else {
                         this._positionRight();
                     }
                     break;
-                case TooltipPosition.bottom:
+                case NgxbTooltipPosition.bottom:
                     if ((hostRect.y + hostRect.height + this._baseSizePx + this._tooltipEl.clientHeight) > document.body.clientHeight) {
                         this._positionTop();
                     } else {
                         this._positionBottom();
                     }
                     break;
-                case TooltipPosition.left:
+                case NgxbTooltipPosition.left:
                     if ((hostRect.x - this._baseSizePx - this._tooltipEl.clientWidth) < 0) {
                         this._positionRight();
                     } else {
@@ -157,7 +157,7 @@ export class NgxbTooltipDirective implements OnDestroy {
         const hostRect = this._hostElement.nativeElement.getBoundingClientRect();
         if (this._tooltipEl) {
             this._renderer.addClass(this._tooltipEl, 'bottom');
-            this._renderer.setStyle(this._tooltipEl, 'top', `${hostRect.y + hostRect.height + this._baseSizePx}px`);
+            this._renderer.setStyle(this._tooltipEl, 'top', `${hostRect.y + hostRect.height + (this._baseSizePx / 2)}px`);
             this._renderer.setStyle(this._tooltipEl, 'left', `${hostRect.x + (hostRect.width / 2) - (this._tooltipEl.clientWidth / 2)}px`);
         }
     }

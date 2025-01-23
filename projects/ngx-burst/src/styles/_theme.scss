@@ -1,0 +1,44 @@
+@use 'sass:string';
+
+@use './variables' as vars;
+
+$config: (
+    'background-color-primary': vars.$color-white,
+    'background-color-secondary': vars.$color-ivory,
+
+    'color-primary': vars.$color-sky,
+    'color-secondary': vars.$color-sky,
+    'color-success': vars.$color-green,
+    'color-error': vars.$color-red,
+    'color-warning': vars.$color-gold,
+
+    'font-color-primary': vars.$color-black,
+    'font-color-secondary': vars.$color-black,
+    'font-family': vars.$font-family,
+    'font-size': vars.$font-size
+);
+
+@mixin def($collection: '', $overrides: ()) {
+    @if string.length($collection) > 0 {
+        $collection: $collection + '-';
+    }
+
+    $theme: map-merge($config, $overrides);
+    @each $property, $value in $theme {
+        --ngxb-#{$collection}#{$property}: #{$value};
+    }
+}
+
+// $bg-color-primary: var(--ngxb-background-color-primary);
+// $bg-color-secondary: var(--ngxb-backgroundc-color-secondary);
+
+// $color-primary: var(--ngxb-color-primary);
+// $color-secondary: var(--ngxb-color-secondary);
+// $color-success: var(--ngxb-color-success);
+// $color-error: var(--ngxb-color-error);
+// $color-warning: var(--ngxb-color-warning);
+
+// $font-color-primary: var(--ngxb-font-color-primary);
+// $font-color-secondary: var(--ngxb-font-color-secondary);
+// $font-family: var(--ngxb-font-family);
+// $font-size: var(--ngxb-font-size);

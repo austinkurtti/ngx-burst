@@ -3,6 +3,12 @@
 // --------------------------------------------------------
 $core-size                              : 1rem;
 
+$breakpoint-sm                          : 576px;
+$breakpoint-md                          : 768px;
+$breakpoint-lg                          : 992px;
+$breakpoint-xl                          : 1200px;
+$breakpoint-xxl                         : 1400px;
+
 
 // --------------------------------------------------------
 // COLORS
@@ -20,3 +26,21 @@ $color-gray-700                         : #666;
 $color-gray-800                         : #555;
 $color-slate                            : #434343;
 $color-black                            : #333;
+$color-navy                             : #192639;
+$color-light-navy                       : #273343;
+$color-purple                           : #7c19e0;
+$color-blue                             : #1919e0;
+$color-sky                              : #19bce0;
+$color-green                            : #19e019;
+$color-lime                             : #bce019;
+$color-yellow                           : #e0e019;
+$color-gold                             : #e0bc19;
+$color-orange                           : #e07c19;
+$color-red                              : #e01919;
+
+
+// --------------------------------------------------------
+// COLORS
+// --------------------------------------------------------
+$font-family                            : sans-serif;
+$font-size                              : $core-size;
