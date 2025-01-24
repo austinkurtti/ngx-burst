@@ -1,4 +1,4 @@
-<header class="container-fluid g-0 py-3">
+<header class="container-fluid g-0 py-3 mb-3">
     <div class="row g-0">
         <div class="col px-3">
             <h1>ngx-burst Showcase</h1>
@@ -6,7 +6,17 @@
     </div>
 </header>
 
-<section id="tooltips" class="container g-0">
+<section id="buttons" class="container g-0">
+    <h2>Buttons</h2>
+    <div class="row g-0 py-5">
+        <div class="col">
+            <button ngxbButton>Button</button>
+            <button ngxbButton disabled>Disabled</button>
+        </div>
+    </div>
+</section>
+
+<section id="dialogs" class="container g-0">
     <h2>Dialogs</h2>
     <div class="row g-0 py-5">
         <div class="col-auto">
@@ -21,7 +31,9 @@
             <button (click)="openDialog()">Open dialog</button>
         </div>
     </div>
+</section>
 
+<section id="tooltips" class="container g-0">
     <h2>Tooltips</h2>
     <h3>Directions</h3>
     <div class="row g-0 py-5">

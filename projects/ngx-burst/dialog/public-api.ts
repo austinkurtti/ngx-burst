@@ -1,5 +1,5 @@
 /**
- * Sub entry point ngx-burst/tooltip
+ * Sub entry point ngx-burst/dialog
  */
 
 export * from './src/dialog-content.directives';

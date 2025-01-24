@@ -17,17 +17,17 @@
 @mixin theme() {
     :root {
         @include theme.def('dialog', (
-            'background-color-primary': vars.$color-white,
             'box-shadow': vars.$hard-box-shadow,
-            'font-color-primary': vars.$color-black,
-            'mask-color': rgba($color: vars.$color-slate, $alpha: .5),
+            'color-background': vars.$color-white,
+            'color-on-background': vars.$color-black,
+            'color-mask': rgba($color: vars.$color-slate, $alpha: .5),
             'z-index': 10000
         ));
     }
 
     dialog {
         align-items: center;
-        background-color: var(--ngxb-dialog-mask-color);
+        background-color: var(--ngxb-dialog-color-mask);
         border: none;
         height: 100vh;
         justify-content: center;
@@ -63,9 +63,10 @@
 
         .dialog-content {
             animation: ngxbDialogAppear ease-in .2s;
-            background-color: var(--ngxb-dialog-background-color-primary);
+            background-color: var(--ngxb-dialog-color-background);
             border-radius: math.div(vars.$core-size, 4);
             box-shadow: var(--ngxb-dialog-box-shadow);
+            color: var(--ngxb-dialog-color-on-background);
 
             .dialog-header {
                 display: flex;

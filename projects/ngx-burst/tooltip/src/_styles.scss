@@ -6,8 +6,8 @@
 @mixin theme() {
     :root {
         @include theme.def('tooltip', (
-            'background-color-primary': vars.$color-black,
-            'font-color-primary': vars.$color-white,
+            'color-background': vars.$color-black,
+            'color-on-background': vars.$color-white,
             'z-index': 100000
         ));
     }
@@ -22,9 +22,9 @@
         z-index: var(--ngxb-tooltip-z-index);
 
         .ngxb-tooltip {
-            background-color: var(--ngxb-tooltip-background-color-primary);
+            background-color: var(--ngxb-tooltip-color-background);
             border-radius: math.div(vars.$core-size, 4);
-            color: var(--ngxb-tooltip-font-color-primary);
+            color: var(--ngxb-tooltip-color-on-background);
             min-width: vars.$core-size;
             padding: vars.$core-size;
             position: absolute;
@@ -38,28 +38,28 @@
             }
 
             &.top:after {
-                border-color: var(--ngxb-tooltip-background-color-primary) transparent transparent transparent;
+                border-color: var(--ngxb-tooltip-color-background) transparent transparent transparent;
                 left: 50%;
                 top: 100%;
                 transform: translateX(-50%);
             }
 
             &.right:after {
-                border-color: transparent var(--ngxb-tooltip-background-color-primary) transparent transparent;
+                border-color: transparent var(---ngxb-tooltip-color-background) transparent transparent;
                 left: -(vars.$core-size * 2);
                 top: 50%;
                 transform: translateY(-50%);
             }
 
             &.bottom:after {
-                border-color: transparent transparent var(--ngxb-tooltip-background-color-primary) transparent;
+                border-color: transparent transparent var(--ngxb-tooltip-color-background) transparent;
                 left: 50%;
                 top: -50%;
                 transform: translateX(-50%);
             }
 
             &.left:after {
-                border-color: transparent transparent transparent var(--ngxb-tooltip-background-color-primary);
+                border-color: transparent transparent transparent var(--ngxb-tooltip-color-background);
                 left: 100%;
                 top: 50%;
                 transform: translateY(-50%);

@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { NgxbButtonDirective } from 'ngx-burst/button';
 import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
 import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
@@ -8,6 +9,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
     styleUrl: './app.component.scss',
     templateUrl: './app.component.html',
     imports: [
+        NgxbButtonDirective,
         NgxbTooltipDirective
     ]
 })

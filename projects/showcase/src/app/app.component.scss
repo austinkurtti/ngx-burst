@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @use 'ngx-burst' as ngxb;
 
 h1, h2, h3, h4, h5 {
@@ -9,17 +11,16 @@ header {
 }
 
 section {
-    &:not(:first-child) {
-        padding-top: ngxb.$core-size;
-    }
-
-    h2 {
-        margin-bottom: ngxb.$core-size;
+    &#buttons {
+        button:not(:first-child) {
+            margin-left: ngxb.$core-size;
+        }
     }
 
     &#tooltips {
         span {
             border: 1px solid ngxb.$color-black;
+            border-radius: math.div(ngxb.$core-size, 4);
             padding: ngxb.$core-size;
         }
     }

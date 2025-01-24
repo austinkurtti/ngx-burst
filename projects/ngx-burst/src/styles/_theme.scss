@@ -3,17 +3,22 @@
 @use './variables' as vars;
 
 $config: (
-    'background-color-primary': vars.$color-white,
-    'background-color-secondary': vars.$color-ivory,
+    'color-background': vars.$color-white,
+    'color-on-background': vars.$color-black,
+    'color-background-secondary': vars.$color-ivory,
+    'color-on-background-secondary': vars.$color-slate,
 
-    'color-primary': vars.$color-sky,
-    'color-secondary': vars.$color-sky,
+    'color-primary': vars.$color-blue,
+    'color-on-primary': vars.$color-white,
     'color-success': vars.$color-green,
+    'color-on-success': vars.$color-white,
     'color-error': vars.$color-red,
+    'color-on-error': vars.$color-white,
     'color-warning': vars.$color-gold,
+    'color-on-warning': vars.$color-black,
+    'color-disabled': vars.$color-gray-300,
+    'color-on-disabled': vars.$color-gray-700,
 
-    'font-color-primary': vars.$color-black,
-    'font-color-secondary': vars.$color-black,
     'font-family': vars.$font-family,
     'font-size': vars.$font-size
 );
