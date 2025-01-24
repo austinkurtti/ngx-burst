@@ -25,6 +25,9 @@ export class AppComponent {
     }
 
     public openDialog(): void {
-        this._dialogService.show(ExampleDialogComponent, this.dialogSize);
+        const dialogRef = this._dialogService.show(ExampleDialogComponent, this.dialogSize);
+        dialogRef.instance.closeCallback = () => {
+            console.log('Dialog closed');
+        }
     }
 }

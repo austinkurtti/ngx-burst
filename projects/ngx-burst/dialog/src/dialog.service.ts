@@ -72,6 +72,8 @@ export class NgxbDialogService {
             return;
         }
 
+        this._dialogRef.instance.closeCallback?.();
+
         // Destroy injected component
         this._dialogRef?.destroy();
 
