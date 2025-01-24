@@ -7,6 +7,21 @@
 </header>
 
 <section id="tooltips" class="container g-0">
+    <h2>Dialogs</h2>
+    <div class="row g-0 py-5">
+        <div class="col-auto">
+            <label for="dialog-size" class="me-2">Choose a size:</label>
+            <select id="dialog-size" class="me-3" (change)="dialogSizeChange($event)">
+                <option [value]="DialogSize.minimal">Minimal</option>
+                <option [value]="DialogSize.small">Small</option>
+                <option [value]="DialogSize.medium">Medium</option>
+                <option [value]="DialogSize.large">Large</option>
+                <option [value]="DialogSize.fullscreen">Fullscreen</option>
+            </select>
+            <button (click)="openDialog()">Open dialog</button>
+        </div>
+    </div>
+
     <h2>Tooltips</h2>
     <h3>Directions</h3>
     <div class="row g-0 py-5">
@@ -32,8 +47,8 @@
             <span ngxbTooltip [tooltipContent]="'Feeling lazy'" [tooltipDelay]="3000">3 second delay</span>
         </div>
         <div class="col text-center">
-            <input type="checkbox" [checked]="tooltipEnabled" (change)="tooltipEnabled = !tooltipEnabled">
-            <label class="me-3">Enabled</label>
+            <input id="tooltip-enabled-checkbox" type="checkbox" [checked]="tooltipEnabled" (change)="tooltipEnabled = !tooltipEnabled">
+            <label for="tooltip-enabled-checkbox" class="me-3">Enabled</label>
             <span ngxbTooltip [tooltipContent]="'Can you see me now?'" [tooltipEnabled]="tooltipEnabled">Enabled/Disabled</span>
         </div>
         <div class="col text-center">

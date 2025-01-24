@@ -1,6 +1,8 @@
 @use 'ngx-burst' as ngxb;
 
 @include ngxb.theme();
+
+@include ngxb.dialog-theme();
 @include ngxb.tooltip-theme();
 
 html {

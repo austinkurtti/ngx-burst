@@ -3,4 +3,5 @@
 @forward './src/styles/core' show theme;
 
 // Components
+@forward './dialog/src/styles' as dialog-* show dialog-theme;
 @forward './tooltip/src/styles' as tooltip-* show tooltip-theme;

@@ -1,0 +1,175 @@
+@use 'sass:math';
+
+@use '../../src/styles/theme';
+@use '../../src/styles/variables' as vars;
+
+@keyframes ngxbDialogAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(vars.$core-size * -2);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@mixin theme() {
+    :root {
+        @include theme.def('dialog', (
+            'background-color-primary': vars.$color-white,
+            'box-shadow': vars.$hard-box-shadow,
+            'font-color-primary': vars.$color-black,
+            'mask-color': rgba($color: vars.$color-slate, $alpha: .5),
+            'z-index': 10000
+        ));
+    }
+
+    dialog {
+        align-items: center;
+        background-color: var(--ngxb-dialog-mask-color);
+        border: none;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        z-index: var(--ngxb-dialog-z-index);
+
+        &[open] {
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+        }
+
+        &.minimal .dialog-content {
+            width: auto;
+        }
+
+        &.fullscreen .dialog-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+
+            .dialog-body {
+                flex-grow: 1;
+                max-height: none;
+            }
+        }
+
+        .dialog-content {
+            animation: ngxbDialogAppear ease-in .2s;
+            background-color: var(--ngxb-dialog-background-color-primary);
+            border-radius: math.div(vars.$core-size, 4);
+            box-shadow: var(--ngxb-dialog-box-shadow);
+
+            .dialog-header {
+                display: flex;
+                margin: 0;
+                padding: vars.$core-size;
+            }
+
+            .dialog-body {
+                margin: 0;
+                max-height: 50vh;
+                overflow: auto;
+                padding: vars.$core-size;
+            }
+
+            .dialog-actions {
+                display: flex;
+                margin: 0;
+                padding: vars.$core-size;
+                justify-content: end;
+            }
+        }
+
+        @media (min-width: 0px) {
+            &.small .dialog-content {
+                width: 80%;
+            }
+
+            &.medium .dialog-content {
+                width: 85%;
+            }
+        
+            &.large .dialog-content {
+                width: 90%;
+            }
+        }
+
+        @media (min-width: vars.$breakpoint-sm) {
+            &.small .dialog-content {
+                width: 70%;
+            }
+
+            &.medium .dialog-content {
+                width: 80%;
+            }
+        
+            &.large .dialog-content {
+                width: 90%;
+            }
+        }
+
+        @media (min-width: vars.$breakpoint-md) {
+            &.small .dialog-content {
+                width: 60%;
+            }
+
+            &.medium .dialog-content {
+                width: 75%;
+            }
+        
+            &.large .dialog-content {
+                width: 85%;
+            }
+        }
+
+        @media (min-width: vars.$breakpoint-lg) {
+            &.small .dialog-content {
+                width: 50%;
+            }
+
+            &.medium .dialog-content {
+                width: 65%;
+            }
+        
+            &.large .dialog-content {
+                width: 80%;
+            }
+        }
+
+        @media (min-width: vars.$breakpoint-xl) {
+            &.small .dialog-content {
+                width: 40%;
+            }
+
+            &.medium .dialog-content {
+                width: 55%;
+            }
+        
+            &.large .dialog-content {
+                width: 75%;
+            }
+        }
+
+        @media (min-width: vars.$breakpoint-xxl) {
+            &.small .dialog-content {
+                width: 30%;
+            }
+
+            &.medium .dialog-content {
+                width: 45%;
+            }
+        
+            &.large .dialog-content {
+                width: 70%;
+            }
+        }
+    }
+}
