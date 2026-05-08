@@ -33,11 +33,10 @@ export class NgxbDialogService {
         return this._dialogEl.querySelectorAll(tabbableSelectors.join(', '));
     }
 
-    public show<T extends NgxbDialogDirective>(componentType: Type<T>, size = NgxbDialogSize.medium, allowSoftClose = true): ComponentRef<T> {
+    public show<T extends NgxbDialogDirective>(componentType: Type<T>, size = NgxbDialogSize.medium, allowSoftClose = true): ComponentRef<T> | null {
         // I refuse to allow more than one dialog open at once
-        // Just return the dialog that is already open
         if (this._open) {
-            return this._dialogRef;
+            return null;
         }
 
         this._open = true;

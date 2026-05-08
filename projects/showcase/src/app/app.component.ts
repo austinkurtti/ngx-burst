@@ -28,8 +28,10 @@ export class AppComponent {
 
     public openDialog(): void {
         const dialogRef = this._dialogService.show(ExampleDialogComponent, this.dialogSize);
-        dialogRef.instance.closeCallback = () => {
-            console.log('Dialog closed');
+        if (dialogRef) {
+            dialogRef.instance.closeCallback = () => {
+                console.log('Dialog closed');
+            }
         }
     }
 }
