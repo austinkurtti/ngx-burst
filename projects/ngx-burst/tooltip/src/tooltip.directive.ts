@@ -62,7 +62,7 @@ export class NgxbTooltipDirective implements OnDestroy {
         this._debounceSubscription = timer(this.tooltipDelay()).subscribe(() => {
             // Create the tooltip element
             this._tooltipEl = <HTMLDivElement>this._renderer.createElement('div');
-            this._tooltipEl.innerHTML = this.tooltipContent();
+            this._tooltipEl.textContent = this.tooltipContent();
             this._renderer.addClass(this._tooltipEl, 'ngxb-tooltip');
 
             // Render the tooltip by appending it now, that way it's rendered size can be used to better position it
