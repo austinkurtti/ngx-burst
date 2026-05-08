@@ -21,20 +21,30 @@
         width: 100vw;
         z-index: var(--ngxb-tooltip-z-index);
 
+        $tooltip-core-size: math.div(vars.$core-size, 2);
+
         .ngxb-tooltip {
             background-color: var(--ngxb-tooltip-color-background);
             border-radius: math.div(vars.$core-size, 4);
             color: var(--ngxb-tooltip-color-on-background);
             min-width: vars.$core-size;
-            padding: vars.$core-size;
+            padding: $tooltip-core-size;
             position: absolute;
+
+            @media (prefers-contrast: more) {
+                border: 1px solid var(--ngxb-color-primary);
+            }
 
             // For tooltip arrow
             &:after {
                 border-style: solid;
-                border-width: vars.$core-size;
+                border-width: $tooltip-core-size;
                 content: "";
                 position: absolute;
+
+                @media (prefers-contrast: more) {
+                    border-style: none;
+                }
             }
 
             &.top:after {
@@ -45,16 +55,16 @@
             }
 
             &.right:after {
-                border-color: transparent var(---ngxb-tooltip-color-background) transparent transparent;
-                left: -(vars.$core-size * 2);
+                border-color: transparent var(--ngxb-tooltip-color-background) transparent transparent;
+                right: 100%;
                 top: 50%;
                 transform: translateY(-50%);
             }
 
             &.bottom:after {
                 border-color: transparent transparent var(--ngxb-tooltip-color-background) transparent;
+                bottom: 100%;
                 left: 50%;
-                top: -50%;
                 transform: translateX(-50%);
             }
 

@@ -37,7 +37,7 @@ export class NgxbTooltipDirective implements OnDestroy {
     }
 
     // TODO - replace with configurable base size
-    private _baseSizePx = 16;
+    private _baseSizePx = 16 / 2;
 
     @HostListener('mouseover')
     mouseover() {
@@ -135,6 +135,13 @@ export class NgxbTooltipDirective implements OnDestroy {
         window.removeEventListener('resize', this._hideTooltip);
     }
 
+    /**
+     * ! IMPORTANT
+     * In the below _position* methods, hostRect is retrieved right before positioning to get the
+     * most up-to-date bounding client rectangle. Otherwise, any previous positioning that has been
+     * performed may skew the viewport slightly and affect the height/width of the host element.
+     */
+
     private _positionTop(): void {
         const hostRect = this._hostElement.nativeElement.getBoundingClientRect();
         if (this._tooltipEl) {
@@ -157,7 +164,7 @@ export class NgxbTooltipDirective implements OnDestroy {
         const hostRect = this._hostElement.nativeElement.getBoundingClientRect();
         if (this._tooltipEl) {
             this._renderer.addClass(this._tooltipEl, 'bottom');
-            this._renderer.setStyle(this._tooltipEl, 'top', `${hostRect.y + hostRect.height + (this._baseSizePx / 2)}px`);
+            this._renderer.setStyle(this._tooltipEl, 'top', `${hostRect.y + hostRect.height + this._baseSizePx}px`);
             this._renderer.setStyle(this._tooltipEl, 'left', `${hostRect.x + (hostRect.width / 2) - (this._tooltipEl.clientWidth / 2)}px`);
         }
     }
