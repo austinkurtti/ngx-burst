@@ -7,6 +7,7 @@ import { NgxbAccordionGroupDirective } from './accordion-group.directive';
     host: {
         'role': 'button',
         'class': 'ngxb-accordion-header',
+        '[class.expanded]': 'contentExpanded()',
         '(click)': 'toggle($event)'
     }
 })

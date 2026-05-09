@@ -1,4 +1,4 @@
-<header class="container-fluid g-0 py-3 mb-3">
+<header class="container-fluid g-0 py-3 mb-5">
     <div class="row g-0">
         <div class="col px-3">
             <h1>ngx-burst Showcase</h1>
@@ -8,19 +8,43 @@
 
 <section id="accordions" class="container g-0">
     <h2>Accordions</h2>
-    <div class="row g-0 py-5">
+    <div class="pt-5 pb-3">
+        <label for="fullCollapsible">Full collapsible</label>
+        <input id="fullCollapsible" type="checkbox" [checked]="accordionFullCollapsible" (change)="accordionFullCollapsible = !accordionFullCollapsible"/>
+
+        <label for="multiExpandable" class="ms-3">Multi expandable</label>
+        <input id="multiExpandable" type="checkbox" [checked]="accordionMultiExpandable" (change)="accordionMultiExpandable = !accordionMultiExpandable"/>
+    </div>
+    <div class="row g-0 pb-5">
         <div class="col">
-            <div ngxbAccordionGroup>
+            <div ngxbAccordionGroup [fullCollapsible]="accordionFullCollapsible" [multiExpandable]="accordionMultiExpandable">
                 <div ngxbAccordionHeader
                     #firstHeader="ngxbAccordionHeader"
                     contentId="first"
+                    class="d-flex justify-content-between"
                 >
                     <span>First</span>
+                    <i class="fas"
+                        [class.fa-minus]="firstHeader.contentExpanded()"
+                        [class.fa-plus]="!firstHeader.contentExpanded()"
+                    ></i>
                 </div>
-                <p ngxbAccordionContent
-                    contentId="first"
+                <p ngxbAccordionContent contentId="first">
+                    <span>First content</span>
+                </p>
+                <div ngxbAccordionHeader
+                    #secondHeader="ngxbAccordionHeader"
+                    contentId="second"
+                    class="d-flex justify-content-between"
                 >
-                    <span>This is the content for the first accordion part.</span>
+                    <span>Second</span>
+                    <i class="fas"
+                        [class.fa-minus]="secondHeader.contentExpanded()"
+                        [class.fa-plus]="!secondHeader.contentExpanded()"
+                    ></i>
+                </div>
+                <p ngxbAccordionContent contentId="second">
+                    <span>Second content</span>
                 </p>
             </div>
         </div>

@@ -22,7 +22,7 @@ export class NgxbAccordionGroupDirective {
 
         if (content) {
             // Check if this content cannot be collapsed
-            if (content.expanded() && !this.fullCollapsible() && (!this.multiExpandable() || this.contents().filter(c => c.expanded()).length === 1)) {
+            if (content.expanded() && !this.fullCollapsible() && this.contents().filter(c => c.expanded()).length === 1) {
                 return;
             }
 

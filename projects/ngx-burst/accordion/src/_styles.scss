@@ -1,12 +1,45 @@
+@use '../../src/styles/theme';
 @use '../../src/styles/variables' as vars;
 
-@mixin theme() {
-    .ngxb-accordion-header {
-        cursor: pointer;
-        padding: vars.$core-size;
+@mixin theme($overrides: ()) {
+    :root {
+        $accordion-config: (
+            'group-color-border': var(--ngxb-color-on-background),
+
+            'header-color-border': var(--ngxb-color-on-background),
+            'header-color-hover': var(--ngxb-color-background-secondary),
+
+            'content-color-border': var(--ngxb-color-on-background)
+        );
+
+        $final-config: map-merge($accordion-config, $overrides);
+        @include theme.def('accordion', $final-config);
     }
 
-    .ngxb-accordion-content {
-        padding: vars.$core-size;
+    .ngxb-accordion-group {
+        border: 1px solid var(--ngxb-accordion-group-color-border);
+
+        .ngxb-accordion-header {
+            cursor: pointer;
+            padding: vars.$core-size;
+
+            &:not(.expanded):not(:last-of-type) {
+                border-bottom: 1px solid var(--ngxb-accordion-header-color-border);
+            }
+
+            &:hover {
+                background-color: var(--ngxb-accordion-header-color-hover);
+            }
+        }
+
+        .ngxb-accordion-content {
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: vars.$core-size;
+
+            &:not(:last-of-type) {
+                border-bottom: 1px solid var(--ngxb-accordion-content-color-border);
+            }
+        }
     }
 }

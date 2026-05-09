@@ -21,6 +21,9 @@ export class AppComponent {
     public DialogSize = NgxbDialogSize;
     public TooltipPosition = NgxbTooltipPosition;
 
+    public accordionFullCollapsible = true;
+    public accordionMultiExpandable = false;
+
     public dialogSize = NgxbDialogSize.minimal;
     public tooltipEnabled = false;
 
