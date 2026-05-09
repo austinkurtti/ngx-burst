@@ -1,0 +1,12 @@
+@use '../../src/styles/variables' as vars;
+
+@mixin theme() {
+    .ngxb-accordion-header {
+        cursor: pointer;
+        padding: vars.$core-size;
+    }
+
+    .ngxb-accordion-content {
+        padding: vars.$core-size;
+    }
+}

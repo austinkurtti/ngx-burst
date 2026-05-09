@@ -6,6 +6,27 @@
     </div>
 </header>
 
+<section id="accordions" class="container g-0">
+    <h2>Accordions</h2>
+    <div class="row g-0 py-5">
+        <div class="col">
+            <div ngxbAccordionGroup>
+                <div ngxbAccordionHeader
+                    #firstHeader="ngxbAccordionHeader"
+                    contentId="first"
+                >
+                    <span>First</span>
+                </div>
+                <p ngxbAccordionContent
+                    contentId="first"
+                >
+                    <span>This is the content for the first accordion part.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="buttons" class="container g-0">
     <h2>Buttons</h2>
     <div class="row g-0 py-5">
