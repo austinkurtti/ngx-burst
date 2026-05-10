@@ -1,8 +1,34 @@
 @use 'sass:math';
 
+@use '../../src/styles/theme';
 @use '../../src/styles/variables' as vars;
 
-@mixin theme() {
+@mixin theme($overrides: ()) {
+    :root {
+        $button-config: (
+            'color-primary': var(--ngxb-color-primary),
+            'color-primary-hover': var(--ngxb-color-primary-hover),
+            'color-primary-active': var(--ngxb-color-primary-active),
+            'color-on-primary': var(--ngxb-color-on-primary),
+
+            'color-positive': var(--ngxb-color-positive),
+            'color-positive-hover': var(--ngxb-color-positive-hover),
+            'color-positive-active': var(--ngxb-color-positive-active),
+            'color-on-positive': var(--ngxb-color-on-positive),
+
+            'color-negative': var(--ngxb-color-negative),
+            'color-negative-hover': var(--ngxb-color-negative-hover),
+            'color-negative-active': var(--ngxb-color-negative-active),
+            'color-on-negative': var(--ngxb-color-on-negative),
+
+            'color-disabled': var(--ngxb-color-disabled),
+            'color-on-disabled': var(--ngxb-color-on-disabled)
+        );
+
+        $final-config: map-merge($button-config, $overrides);
+        @include theme.def('button', $final-config);
+    }
+
     .ngxb-button {
         border: none;
         border-radius: math.div(vars.$core-size, 4);
@@ -10,47 +36,47 @@
         padding: math.div(vars.$core-size, 2);
 
         &.primary {
-            background-color: var(--ngxb-color-primary);
-            color: var(--ngxb-color-on-primary);
+            background-color: var(--ngxb-button-color-primary);
+            color: var(--ngxb-button-color-on-primary);
 
             &:hover:not(:disabled) {
-                background-color: var(--ngxb-color-primary-hover);
+                background-color: var(--ngxb-button-color-primary-hover);
             }
 
             &:active:not(:disabled) {
-                background-color: var(--ngxb-color-primary-active);
+                background-color: var(--ngxb-button-color-primary-active);
             }
         }
 
         &.positive {
-            background-color: var(--ngxb-color-positive);
-            color: var(--ngxb-color-on-positive);
+            background-color: var(--ngxb-button-color-positive);
+            color: var(--ngxb-button-color-on-positive);
 
             &:hover:not(:disabled) {
-                background-color: var(--ngxb-color-positive-hover);
+                background-color: var(--ngxb-button-color-positive-hover);
             }
 
             &:active:not(:disabled) {
-                background-color: var(--ngxb-color-positive-active);
+                background-color: var(--ngxb-button-color-positive-active);
             }
         }
 
         &.negative {
-            background-color: var(--ngxb-color-negative);
-            color: var(--ngxb-color-on-negative);
+            background-color: var(--ngxb-button-color-negative);
+            color: var(--ngxb-button-color-on-negative);
 
             &:hover:not(:disabled) {
-                background-color: var(--ngxb-color-negative-hover);
+                background-color: var(--ngxb-button-color-negative-hover);
             }
 
             &:active:not(:disabled) {
-                background-color: var(--ngxb-color-negative-active);
+                background-color: var(--ngxb-button-color-negative-active);
             }
         }
 
         &:disabled {
-            background-color: var(--ngxb-color-disabled);
-            color: var(--ngxb-color-on-disabled);
+            background-color: var(--ngxb-button-color-disabled);
+            color: var(--ngxb-button-color-on-disabled);
             cursor:not-allowed;
         }
 
