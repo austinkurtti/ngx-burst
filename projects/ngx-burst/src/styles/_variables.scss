@@ -40,7 +40,7 @@ $color-red                              : #e01958;
 
 
 // --------------------------------------------------------
-// COLORS
+// FONTS
 // --------------------------------------------------------
 $font-family                            : sans-serif;
 $font-size                              : $core-size;
@@ -50,3 +50,13 @@ $font-size                              : $core-size;
 // SHADOWS
 // --------------------------------------------------------
 $hard-box-shadow                        : 0 2px 10px 0 rgba($color: $color-black, $alpha: .55);
+
+
+// --------------------------------------------------------
+// Z-INDEXES
+// --------------------------------------------------------
+$z-index-base                           : 0;
+$z-index-menu                           : 10000;
+$z-index-notification                   : 100000;
+$z-index-dialog                         : 1000000;
+$z-index-tooltip                        : 10000000;

@@ -14,15 +14,18 @@
     }
 }
 
-@mixin theme() {
+@mixin theme($overrides: ()) {
     :root {
-        @include theme.def('dialog', (
+        $dialog-config: (
             'box-shadow': vars.$hard-box-shadow,
-            'color-background': vars.$color-white,
-            'color-on-background': vars.$color-black,
+            'color-background': var(--ngxb-color-background),
+            'color-on-background': var(--ngxb-color-on-background),
             'color-mask': rgba($color: vars.$color-slate, $alpha: .5),
-            'z-index': 10000
-        ));
+            'z-index': vars.$z-index-dialog
+        );
+
+        $final-config: map-merge($dialog-config, $overrides);
+        @include theme.def('dialog', $final-config);
     }
 
     dialog {
