@@ -4,15 +4,54 @@
 
 @mixin theme() {
     .ngxb-button {
-        background-color: var(--ngxb-color-primary);
         border: none;
         border-radius: math.div(vars.$core-size, 4);
-        color: var(--ngxb-color-on-primary);
+        font-weight: bold;
         padding: math.div(vars.$core-size, 2);
+
+        &.primary {
+            background-color: var(--ngxb-color-primary);
+            color: var(--ngxb-color-on-primary);
+
+            &:hover:not(:disabled) {
+                background-color: var(--ngxb-color-primary-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--ngxb-color-primary-active);
+            }
+        }
+
+        &.positive {
+            background-color: var(--ngxb-color-positive);
+            color: var(--ngxb-color-on-positive);
+
+            &:hover:not(:disabled) {
+                background-color: var(--ngxb-color-positive-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--ngxb-color-positive-active);
+            }
+        }
+
+        &.negative {
+            background-color: var(--ngxb-color-negative);
+            color: var(--ngxb-color-on-negative);
+
+            &:hover:not(:disabled) {
+                background-color: var(--ngxb-color-negative-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--ngxb-color-negative-active);
+            }
+        }
 
         &:disabled {
             background-color: var(--ngxb-color-disabled);
             color: var(--ngxb-color-on-disabled);
+            cursor:not-allowed;
         }
 
         &:not(:disabled) {

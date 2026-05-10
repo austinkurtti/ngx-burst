@@ -1,5 +1,6 @@
 import { Directive } from '@angular/core';
 
+// TODO - break these into individual files
 @Directive({
     selector: '[ngxbDialogHeader]',
     host: {

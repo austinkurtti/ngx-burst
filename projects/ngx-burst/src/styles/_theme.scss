@@ -1,6 +1,8 @@
+@use 'sass:color';
 @use 'sass:string';
 
 @use './variables' as vars;
+@use './functions' as fns;
 
 $config: (
     'color-background': vars.$color-white,
@@ -9,15 +11,21 @@ $config: (
     'color-on-background-secondary': vars.$color-slate,
 
     'color-primary': vars.$color-blue,
-    'color-on-primary': vars.$color-white,
-    'color-success': vars.$color-green,
-    'color-on-success': vars.$color-white,
-    'color-error': vars.$color-red,
-    'color-on-error': vars.$color-white,
+    'color-primary-hover': color.adjust(vars.$color-blue, $lightness: 10%),
+    'color-primary-active': color.adjust(vars.$color-blue, $lightness: 20%),
+    'color-on-primary': fns.adjust-to-contrast(vars.$color-blue, vars.$color-blue),
+    'color-positive': vars.$color-green,
+    'color-positive-hover': color.adjust(vars.$color-green, $lightness: 10%),
+    'color-positive-active': color.adjust(vars.$color-green, $lightness: 20%),
+    'color-on-positive': fns.adjust-to-contrast(vars.$color-green, vars.$color-green),
+    'color-negative': vars.$color-red,
+    'color-negative-hover': color.adjust(vars.$color-red, $lightness: 10%),
+    'color-negative-active': color.adjust(vars.$color-red, $lightness: 20%),
+    'color-on-negative': fns.adjust-to-contrast(vars.$color-red, vars.$color-red),
     'color-warning': vars.$color-gold,
     'color-on-warning': vars.$color-black,
     'color-disabled': vars.$color-gray-300,
-    'color-on-disabled': vars.$color-gray-700,
+    'color-on-disabled': fns.adjust-to-contrast(vars.$color-gray-300, vars.$color-gray-300),
 
     'font-family': vars.$font-family,
     'font-size': vars.$font-size

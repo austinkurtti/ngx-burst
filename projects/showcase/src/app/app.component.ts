@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgxbAccordionContentDirective, NgxbAccordionGroupDirective, NgxbAccordionHeaderDirective } from 'ngx-burst/accordion';
-import { NgxbButtonDirective } from 'ngx-burst/button';
+import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
 import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
@@ -18,14 +18,15 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
     ]
 })
 export class AppComponent {
-    public DialogSize = NgxbDialogSize;
-    public TooltipPosition = NgxbTooltipPosition;
-
     public accordionFullCollapsible = true;
     public accordionMultiExpandable = false;
 
     public dialogSize = NgxbDialogSize.minimal;
     public tooltipEnabled = false;
+
+    public ButtonType = NgxbButtonType;
+    public DialogSize = NgxbDialogSize;
+    public TooltipPosition = NgxbTooltipPosition;
 
     private _dialogService = inject(NgxbDialogService);
 
