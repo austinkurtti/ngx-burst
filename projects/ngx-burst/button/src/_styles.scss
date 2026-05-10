@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:math';
 
 @use '../../src/styles/theme';
@@ -10,6 +11,11 @@
             'color-primary-hover': var(--ngxb-color-primary-hover),
             'color-primary-active': var(--ngxb-color-primary-active),
             'color-on-primary': var(--ngxb-color-on-primary),
+
+            'color-subtle': rgba($color: vars.$color-slate, $alpha: 0),
+            'color-subtle-hover': rgba($color: vars.$color-slate, $alpha: .1),
+            'color-subtle-active': rgba($color: vars.$color-slate, $alpha: .2),
+            'color-on-subtle': var(--ngxb-color-on-background),
 
             'color-positive': var(--ngxb-color-positive),
             'color-positive-hover': var(--ngxb-color-positive-hover),
@@ -45,6 +51,19 @@
 
             &:active:not(:disabled) {
                 background-color: var(--ngxb-button-color-primary-active);
+            }
+        }
+
+        &.subtle {
+            background-color: var(--ngxb-button-color-subtle);
+            color: var(--ngxb-button-color-on-subtle);
+
+            &:hover:not(:disabled) {
+                background-color: var(--ngxb-button-color-subtle-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--ngxb-button-color-subtle-active);
             }
         }
 
