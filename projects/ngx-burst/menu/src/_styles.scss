@@ -1,0 +1,59 @@
+@use 'sass:math';
+
+@use '../../src/styles/theme';
+@use '../../src/styles/variables' as vars;
+
+@mixin theme($overrides: ()) {
+    :root {
+        $menu-config: (
+            'color-background': var(--ngxb-color-background),
+
+            'item-color-background-hover': var(--ngxb-color-background-secondary)
+        );
+
+        $final-config: map-merge($menu-config, $overrides);
+        @include theme.def('menu', $final-config);
+    }
+
+    $menu-border-radius: math.div(vars.$core-size, 4);
+
+    [role=menu] {
+        background-color: var(--ngxb-menu-color-background);
+        border-radius: $menu-border-radius;
+        box-shadow: vars.$box-shadow-hard;
+        position: absolute;
+        z-index: vars.$z-index-menu;
+
+        @media (prefers-contrast: more) {
+            border: 1px solid var(--ngxb-color-primary);
+        }
+
+        [role=menuitem] {
+            display: block;
+            padding: vars.$core-size;
+
+            &.disabled {
+                cursor: not-allowed;
+                opacity: .5;
+            }
+
+            &:not(.disabled) {
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--ngxb-menu-item-color-background-hover);
+                }
+            }
+
+            &:first-child {
+                border-top-left-radius: $menu-border-radius;
+                border-top-right-radius: $menu-border-radius;
+            }
+
+            &:last-child {
+                border-bottom-left-radius: $menu-border-radius;
+                border-bottom-right-radius: $menu-border-radius;
+            }
+        }
+    }
+}

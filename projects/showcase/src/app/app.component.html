@@ -1,4 +1,4 @@
-<header class="container-fluid g-0 py-3 mb-5">
+<header class="container-fluid g-0 py-3">
     <div class="row g-0">
         <div class="col px-3">
             <h1>ngx-burst Showcase</h1>
@@ -7,15 +7,15 @@
 </header>
 
 <section id="accordions" class="container g-0">
-    <h2>Accordions</h2>
-    <div class="pt-5 pb-3">
+    <h2 class="mb-3">Accordions</h2>
+    <div class="mb-3">
         <label for="fullCollapsible">Full collapsible</label>
         <input id="fullCollapsible" type="checkbox" [checked]="accordionFullCollapsible" (change)="accordionFullCollapsible = !accordionFullCollapsible"/>
 
         <label for="multiExpandable" class="ms-3">Multi expandable</label>
         <input id="multiExpandable" type="checkbox" [checked]="accordionMultiExpandable" (change)="accordionMultiExpandable = !accordionMultiExpandable"/>
     </div>
-    <div class="row g-0 pb-5">
+    <div class="row g-0">
         <div class="col">
             <div ngxbAccordionGroup [fullCollapsible]="accordionFullCollapsible" [multiExpandable]="accordionMultiExpandable">
                 <div ngxbAccordionHeader
@@ -52,8 +52,8 @@
 </section>
 
 <section id="buttons" class="container g-0">
-    <h2>Buttons</h2>
-    <div class="row g-0 py-5">
+    <h2 class="mb-3">Buttons</h2>
+    <div class="row g-0">
         <div class="col">
             <button ngxbButton>Button</button>
             <button ngxbButton [type]="ButtonType.subtle">Subtle</button>
@@ -65,10 +65,10 @@
 </section>
 
 <section id="dialogs" class="container g-0">
-    <h2>Dialogs</h2>
-    <div class="row g-0 py-5">
+    <h2 class="mb-3">Dialogs</h2>
+    <div class="row g-0">
         <div class="col-auto">
-            <label for="dialog-size" class="me-2">Choose a size:</label>
+            <label for="dialog-size" class="me-2">Choose size:</label>
             <select id="dialog-size" class="me-3" (change)="dialogSizeChange($event)">
                 <option [value]="DialogSize.minimal">Minimal</option>
                 <option [value]="DialogSize.small">Small</option>
@@ -76,43 +76,107 @@
                 <option [value]="DialogSize.large">Large</option>
                 <option [value]="DialogSize.fullscreen">Fullscreen</option>
             </select>
-            <button (click)="openDialog()">Open dialog</button>
+            <button ngxbButton (click)="openDialog()">Open dialog</button>
+        </div>
+    </div>
+</section>
+
+<section id="menus" class="container g-0">
+    <h2 class="mb-3">Menus</h2>
+    <div class="row g-0">
+        <div class="col">
+            <button ngxbButton ngxbMenu>
+                <span>Basic menu</span>
+                <ng-template #menuContent>
+                    <div ngxbMenuContent>
+                        <div ngxbMenuItem>Menu item one</div>
+                        <div ngxbMenuItem>Menu item two</div>
+                        <div ngxbMenuItem>Menu item three</div>
+                    </div>
+                </ng-template>
+            </button>
+            <button ngxbButton ngxbMenu>
+                <span>Disabled item</span>
+                <ng-template #menuContent>
+                    <div ngxbMenuContent>
+                        <div ngxbMenuItem>Menu item one</div>
+                        <div ngxbMenuItem [disabled]="true">Menu item two</div>
+                        <div ngxbMenuItem>Menu item three</div>
+                    </div>
+                </ng-template>
+            </button>
+            <label for="menu-position" class="ms-5 me-2">Choose position:</label>
+            <select id="menu-position" (change)="menuPositionChange($event)">
+                <option [value]="MenuPosition.topStart">TopStart</option>
+                <option [value]="MenuPosition.topEnd">TopEnd</option>
+                <option [value]="MenuPosition.bottomStart">BottomStart</option>
+                <option [value]="MenuPosition.bottomEnd">BottomEnd</option>
+            </select>
+            <button ngxbButton ngxbMenu [menuPosition]="menuPosition">
+                <span>Positioned menu</span>
+                <ng-template #menuContent>
+                    <div ngxbMenuContent>
+                        <div ngxbMenuItem>Menu item one</div>
+                        <div ngxbMenuItem>Menu item two</div>
+                        <div ngxbMenuItem>Menu item three</div>
+                    </div>
+                </ng-template>
+            </button>
+            <label for="menu-width" class="ms-5 me-2">Choose width:</label>
+            <select id="menu-width" (change)="menuWidthChange($event)">
+                <option [value]="MenuWidth.auto">Auto</option>
+                <option [value]="MenuWidth.full">Full</option>
+                <option [value]="MenuWidth.threeQuarters">ThreeQuarters</option>
+                <option [value]="MenuWidth.half">Half</option>
+                <option [value]="MenuWidth.third">Third</option>
+                <option [value]="MenuWidth.quarter">Quarter</option>
+            </select>
+            <button ngxbButton ngxbMenu [menuWidth]="menuWidth">
+                <span>Sized menu</span>
+                <ng-template #menuContent>
+                    <div ngxbMenuContent>
+                        <div ngxbMenuItem>Menu item one</div>
+                        <div ngxbMenuItem>Menu item two</div>
+                        <div ngxbMenuItem>Menu item three</div>
+                    </div>
+                </ng-template>
+            </button>
         </div>
     </div>
 </section>
 
 <section id="tooltips" class="container g-0">
-    <h2>Tooltips</h2>
-    <h3>Directions</h3>
-    <div class="row g-0 py-5">
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'Tooltip on top'">Top</span>
+    <h2 class="mb-3">Tooltips</h2>
+    <h3 class="mb-2">Directions</h3>
+    <div class="row g-0 mb-2 justify-content-between">
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Tooltip on top'">Top</div>
         </div>
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'Tooltip on right'" [tooltipPosition]="TooltipPosition.right">Right</span>
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Tooltip on right'" [tooltipPosition]="TooltipPosition.right">Right</div>
         </div>
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'Tooltip on bottom'" [tooltipPosition]="TooltipPosition.bottom">Bottom</span>
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Tooltip on bottom'" [tooltipPosition]="TooltipPosition.bottom">Bottom</div>
         </div>
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'Tooltip on left'" [tooltipPosition]="TooltipPosition.left">Left</span>
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Tooltip on left'" [tooltipPosition]="TooltipPosition.left">Left</div>
         </div>
     </div>
-    <h3>Features</h3>
-    <div class="row g-0 py-5">
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'Gotta go fast'" [tooltipDelay]="0">No delay</span>
+    <h3 class="mb-2">Features</h3>
+    <div class="row g-0 justify-content-between">
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Gotta go fast'" [tooltipDelay]="0">No delay</div>
         </div>
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'Feeling lazy'" [tooltipDelay]="3000">3 second delay</span>
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Feeling lazy'" [tooltipDelay]="3000">3 second delay</div>
         </div>
-        <div class="col text-center">
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'Can you see me now?'" [tooltipEnabled]="tooltipEnabled">Enabled/Disabled</div>
             <input id="tooltip-enabled-checkbox" type="checkbox" [checked]="tooltipEnabled" (change)="tooltipEnabled = !tooltipEnabled">
             <label for="tooltip-enabled-checkbox" class="me-3">Enabled</label>
-            <span ngxbTooltip [tooltipContent]="'Can you see me now?'" [tooltipEnabled]="tooltipEnabled">Enabled/Disabled</span>
         </div>
-        <div class="col text-center">
-            <span ngxbTooltip [tooltipContent]="'TODO'">Rich content</span>
+        <div class="col-auto text-center">
+            <div ngxbTooltip [tooltipContent]="'TODO'">Rich content</div>
         </div>
     </div>
 </section>

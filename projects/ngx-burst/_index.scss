@@ -7,4 +7,5 @@
 @forward './accordion/src/styles' as accordion-* show accordion-theme;
 @forward './button/src/styles' as button-* show button-theme;
 @forward './dialog/src/styles' as dialog-* show dialog-theme;
+@forward './menu/src/styles' as menu-* show menu-theme;
 @forward './tooltip/src/styles' as tooltip-* show tooltip-theme;

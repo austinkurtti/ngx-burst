@@ -11,14 +11,25 @@ header {
 }
 
 section {
-    &#buttons {
+    padding-top: ngxb.$core-size * 2;
+    padding-bottom: ngxb.$core-size * 2;
+
+    &:first-of-type {
+        padding-top: ngxb.$core-size * 4;
+    }
+
+    &:last-of-type {
+        padding-bottom: ngxb.$core-size * 4;
+    }
+
+    &#buttons, &#menus {
         button:not(:first-child) {
             margin-left: ngxb.$core-size;
         }
     }
 
     &#tooltips {
-        span {
+        div[ngxbtooltip] {
             border: 1px solid ngxb.$color-black;
             border-radius: math.div(ngxb.$core-size, 4);
             padding: ngxb.$core-size;

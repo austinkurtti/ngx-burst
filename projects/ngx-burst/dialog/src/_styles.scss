@@ -17,7 +17,7 @@
 @mixin theme($overrides: ()) {
     :root {
         $dialog-config: (
-            'box-shadow': vars.$hard-box-shadow,
+            'box-shadow': vars.$box-shadow-hard,
             'color-background': var(--ngxb-color-background),
             'color-on-background': var(--ngxb-color-on-background),
             'color-mask': rgba($color: vars.$color-slate, $alpha: .5),
