@@ -84,15 +84,15 @@ export class NgxbMenuDirective {
         }
         if (this._positionedAt(NgxbMenuPosition.topEnd) || this._positionedAt(NgxbMenuPosition.bottomEnd)) {
             if (menuEl.clientWidth > hostRect.right) {
-                this._positionLeft(menuEl);
+                this._positionStart(menuEl);
             } else {
-                this._positionRight(menuEl);
+                this._positionEnd(menuEl);
             }
         } else if (this._positionedAt(NgxbMenuPosition.topStart) || this._positionedAt(NgxbMenuPosition.bottomStart)) {
             if (menuEl.clientWidth > (document.body.clientWidth - hostRect.left)) {
-                this._positionRight(menuEl);
+                this._positionEnd(menuEl);
             } else {
-                this._positionLeft(menuEl);
+                this._positionStart(menuEl);
             }
         }
 
@@ -126,7 +126,7 @@ export class NgxbMenuDirective {
         this._renderer.setStyle(menuEl, 'top', `${hostRect.top - menuEl.clientHeight}px`);
     }
 
-    private _positionRight(menuEl: any): void {
+    private _positionEnd(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
         let leftValue = hostRect.x + hostRect.width - menuEl.clientWidth;
         leftValue = leftValue < 0 ? 0 : leftValue;
@@ -138,8 +138,10 @@ export class NgxbMenuDirective {
         this._renderer.setStyle(menuEl, 'top', `${hostRect.bottom}px`);
     }
 
-    private _positionLeft(menuEl: any): void {
+    private _positionStart(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        this._renderer.setStyle(menuEl, 'left', `${hostRect.left}px`);
+        let leftValue = hostRect.left;
+        leftValue = leftValue + menuEl.clientWidth > document.body.clientWidth ? document.body.clientWidth - menuEl.clientWidth : leftValue;
+        this._renderer.setStyle(menuEl, 'left', `${leftValue}px`);
     }
 }
