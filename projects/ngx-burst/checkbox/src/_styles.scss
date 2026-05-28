@@ -1,0 +1,17 @@
+@use '../../src/styles/theme';
+
+@mixin theme($overrides: ()) {
+    :root {
+        $checkbox-config: (
+            'color-background': var(--ngxb-color-primary),
+            'color-on-background': var(--ngxb-color-on-primary)
+        );
+
+        $final-config: map-merge($checkbox-config, $overrides);
+        @include theme.def('checkbox', $final-config);
+    }
+
+    input[type=checkbox] {
+        accent-color: var(--ngxb-checkbox-color-background);
+    }
+}
