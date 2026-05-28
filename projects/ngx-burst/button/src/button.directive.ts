@@ -9,7 +9,7 @@ import { NgxbButtonType } from './button-type';
     }
 })
 export class NgxbButtonDirective {
-    public type = input<NgxbButtonType>(NgxbButtonType.primary);
+    public type = input<NgxbButtonType>(NgxbButtonType.default);
 
     public ButtonType = NgxbButtonType;
 }

@@ -7,6 +7,11 @@
 @mixin theme($overrides: ()) {
     :root {
         $button-config: (
+            'color-default': rgba($color: vars.$color-slate, $alpha: 0),
+            'color-default-hover': rgba($color: vars.$color-slate, $alpha: .1),
+            'color-default-active': rgba($color: vars.$color-slate, $alpha: .2),
+            'color-on-default': var(--ngxb-color-on-background),
+
             'color-primary': var(--ngxb-color-primary),
             'color-primary-hover': var(--ngxb-color-primary-hover),
             'color-primary-active': var(--ngxb-color-primary-active),
@@ -40,6 +45,20 @@
         border-radius: math.div(vars.$core-size, 4);
         font-weight: bold;
         padding: math.div(vars.$core-size, 2);
+
+        &.default {
+            background-color: var(--ngxb-button-color-default);
+            border: solid 1px var(--ngxb-color-on-background);
+            color: var(--ngxb-button-color-on-default);
+
+            &:hover:not(:disabled) {
+                background-color: var(--ngxb-button-color-default-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--ngxb-button-color-default-active);
+            }
+        }
 
         &.primary {
             background-color: var(--ngxb-button-color-primary);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxbButtonDirective } from 'ngx-burst/button';
+import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbDialogActionsDirective, NgxbDialogBodyDirective, NgxbDialogDirective, NgxbDialogHeaderDirective } from 'ngx-burst/dialog';
 
 @Component({
@@ -12,4 +12,6 @@ import { NgxbDialogActionsDirective, NgxbDialogBodyDirective, NgxbDialogDirectiv
         NgxbDialogHeaderDirective
     ]
 })
-export class ExampleDialogComponent extends NgxbDialogDirective {}
+export class ExampleDialogComponent extends NgxbDialogDirective {
+    public ButtonType = NgxbButtonType;
+}

@@ -5,5 +5,5 @@
 </div>
 
 <div ngxbDialogActions>
-    <button ngxbButton>Action</button>
+    <button ngxbButton [type]="ButtonType.primary" (click)="dialogService.close()">Close</button>
 </div>
