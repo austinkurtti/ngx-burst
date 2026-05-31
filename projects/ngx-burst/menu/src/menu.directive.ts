@@ -3,7 +3,15 @@ import { NgxbMenuPosition, NgxbMenuWidth } from './menu-settings';
 
 /**
  * TODO:
- * Add ARIA attributes
+ * - Add ARIA attributes
+ * - Keyboard nav
+ *      - When focused on host
+ *          - Enter, space, and down arrow should open menu and autofocus first focusable element
+ *          - Tab should not open menu
+ *      - When focused in menu
+ *          - Up/down arrow should focus next focusable element, with focus wrapping between first and last elements
+ *          - Tab and escape should close the menu and refocus the host
+ *          - Enter and space should click element and close menu 
  */
 @Directive({
     selector: '[ngxbMenu]',
@@ -40,7 +48,6 @@ export class NgxbMenuDirective {
     private _isOpen = signal(false);
 
     @HostListener('click', ['$event'])
-    @HostListener('keydown', ['$event'])
     hostClick(event: KeyboardEvent | PointerEvent): void {
         if (this._isOpen()) {
             this.close();

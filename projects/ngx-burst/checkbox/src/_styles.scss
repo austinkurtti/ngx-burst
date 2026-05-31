@@ -30,6 +30,11 @@
 
         &.disabled {
             color: var(--ngxb-checkbox-color-unchecked-disabled);
+            cursor: not-allowed;
+
+            input[type=checkbox] {
+                cursor: not-allowed;
+            }
 
             fa-icon.unchecked {
                 color: var(--ngxb-checkbox-color-unchecked-disabled);

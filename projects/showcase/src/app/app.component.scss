@@ -22,13 +22,13 @@ section {
         padding-bottom: ngxb.$core-size * 4;
     }
 
-    &#buttons, &#menus {
+    &#button, &#menu {
         button:not(:first-child) {
             margin-left: ngxb.$core-size;
         }
     }
 
-    &#tooltips {
+    &#tooltip {
         div[ngxbtooltip] {
             border: 1px solid ngxb.$color-black;
             border-radius: math.div(ngxb.$core-size, 4);
