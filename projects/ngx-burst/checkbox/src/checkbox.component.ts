@@ -7,6 +7,9 @@ import { faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-ico
 @Component({
     selector: 'ngxb-checkbox',
     templateUrl: './checkbox.component.html',
+    host: {
+        '[style.display]': '"inline-block"'
+    },
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
