@@ -122,10 +122,6 @@ export class NgxbMenuDirective {
      * In the below _position* methods, hostRect is retrieved right before positioning to get the
      * most up-to-date bounding client rectangle. Otherwise, any previous positioning that has been
      * performed may skew the viewport slightly and affect the height/width of the host element.
-     * 
-     * TODO:
-     * Large menu widths can cause menus to get pushed off screen. Need to do some more checks to ensure
-     * the _positionedAt method is sufficient enough to determine if menu will be fully on screen.
      */
 
     private _positionTop(menuEl: any): void {
