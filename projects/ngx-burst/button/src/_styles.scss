@@ -114,6 +114,7 @@
 
         &:disabled {
             background-color: var(--ngxb-button-color-disabled);
+            border-color: var(--ngxb-button-color-disabled);
             color: var(--ngxb-button-color-on-disabled);
             cursor:not-allowed;
         }

@@ -9,11 +9,8 @@
 <section id="accordions" class="container g-0">
     <h2 class="mb-3">Accordions</h2>
     <div class="mb-3">
-        <label for="fullCollapsible">Full collapsible</label>
-        <input id="fullCollapsible" type="checkbox" [checked]="accordionFullCollapsible" (change)="accordionFullCollapsible = !accordionFullCollapsible"/>
-
-        <label for="multiExpandable" class="ms-3">Multi expandable</label>
-        <input id="multiExpandable" type="checkbox" [checked]="accordionMultiExpandable" (change)="accordionMultiExpandable = !accordionMultiExpandable"/>
+        <ngxb-checkbox [(ngModel)]="accordionFullCollapsible">Full collapsible</ngxb-checkbox>
+        <ngxb-checkbox class="ms-3" [(ngModel)]="accordionMultiExpandable">Multi expandable</ngxb-checkbox>
     </div>
     <div class="row g-0">
         <div class="col">
