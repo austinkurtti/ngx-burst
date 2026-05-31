@@ -1,5 +1,7 @@
+@use 'sass:math';
+
 @use '../../src/styles/theme';
-// @use '../../src/styles//variables' as vars;
+@use '../../src/styles//variables' as vars;
 
 @mixin theme($overrides: ()) {
     :root {
@@ -21,13 +23,13 @@
             flex-direction: column;
 
             label:not(:first-child) {
-                margin-top: 1rem;
+                margin-top: vars.$core-size;
                 margin-left: 0;
             }
         }
 
         legend {
-            margin-bottom: .25rem;
+            margin-bottom: math.div(vars.$core-size, 4);
             padding: 0;
         }
 
@@ -38,7 +40,7 @@
                 cursor: pointer;
 
                 &:not(:first-child) {
-                    margin-left: 1rem;
+                    margin-left: vars.$core-size;
                 }
 
                 &.disabled {
