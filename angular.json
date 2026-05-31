@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-burst",
       "sourceRoot": "projects/ngx-burst",
-      "prefix": "lib",
+      "prefix": "ngxb",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
@@ -67,7 +67,6 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
               "node_modules/bootstrap/dist/css/bootstrap-utilities.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "projects/showcase/src/styles.scss"
             ],
             "stylePreprocessorOptions": {

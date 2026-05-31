@@ -1,4 +1,13 @@
-<label class="ngxb-checkbox">
+<label class="ngxb-checkbox" [class.disabled]="disabled()" (click)="toggleCheck()">
     <input type="checkbox"/>
-    <i>cb</i>
+
+    @if (checked) {
+        <fa-icon class="checked" size="lg" [icon]="['fas', 'check-square']"></fa-icon>
+    }
+    @else {
+        <fa-icon class="unchecked" size="lg" [icon]="['far', 'square']"></fa-icon>
+    }
+    <span>
+        <ng-content></ng-content>
+    </span>
 </label>

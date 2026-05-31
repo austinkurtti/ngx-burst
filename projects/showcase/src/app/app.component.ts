@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { NgxbAccordionContentDirective, NgxbAccordionGroupDirective, NgxbAccordionHeaderDirective } from 'ngx-burst/accordion';
 import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
@@ -12,6 +13,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
     styleUrl: './app.component.scss',
     templateUrl: './app.component.html',
     imports: [
+        FormsModule,
         NgxbAccordionContentDirective,
         NgxbAccordionGroupDirective,
         NgxbAccordionHeaderDirective,
@@ -26,6 +28,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
 export class AppComponent {
     public accordionFullCollapsible = true;
     public accordionMultiExpandable = false;
+    public checkboxDisabledValue = true;
 
     public dialogSize = NgxbDialogSize.minimal;
     public menuPosition = NgxbMenuPosition.topStart;

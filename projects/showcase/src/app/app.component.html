@@ -69,7 +69,9 @@
     <h2 class="mb-3">Checkbox</h2>
     <div class="row g-0">
         <div class="col">
-            <ngxb-checkbox></ngxb-checkbox>
+            <ngxb-checkbox>Default</ngxb-checkbox>
+            <ngxb-checkbox class="ms-3" [disabled]="true">Disabled unchecked</ngxb-checkbox>
+            <ngxb-checkbox class="ms-3" [disabled]="true" [(ngModel)]="checkboxDisabledValue">Disabled checked</ngxb-checkbox>
         </div>
     </div>
 </section>

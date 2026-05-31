@@ -3,15 +3,53 @@
 @mixin theme($overrides: ()) {
     :root {
         $checkbox-config: (
-            'color-background': var(--ngxb-color-primary),
-            'color-on-background': var(--ngxb-color-on-primary)
+            'color-unchecked': var(--ngxb-color-on-background),
+            'color-unchecked-disabled': var(--ngxb-color-disabled),
+            'color-checked': var(--ngxb-color-primary),
+            'color-checked-disabled': var(--ngxb-color-disabled)
         );
 
         $final-config: map-merge($checkbox-config, $overrides);
         @include theme.def('checkbox', $final-config);
     }
 
-    input[type=checkbox] {
-        accent-color: var(--ngxb-checkbox-color-background);
+    .ngxb-checkbox {
+        position: relative;
+
+        &:not(.disabled) {
+            cursor: pointer;
+
+            input[type=checkbox] {
+                cursor: pointer;
+            }
+        }
+
+        &.disabled {
+            color: var(--ngxb-checkbox-color-unchecked-disabled);
+
+            fa-icon.unchecked {
+                color: var(--ngxb-checkbox-color-unchecked-disabled);
+            }
+
+            fa-icon.checked {
+                color: var(--ngxb-checkbox-color-checked-disabled);
+            }
+        }
+
+        input[type=checkbox] {
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+        }
+
+        fa-icon.unchecked {
+            color: var(--ngxb-checkbox-color-unchecked);
+        }
+
+        fa-icon.checked {
+            color: var(--ngxb-checkbox-color-checked);
+        }
     }
 }
