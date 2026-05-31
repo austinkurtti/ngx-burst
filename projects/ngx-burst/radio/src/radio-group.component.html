@@ -1,0 +1,22 @@
+@if (label()) {
+    <legend>{{ label() }}</legend>
+}
+
+<div class="options">
+    @for (opt of options(); track opt.value) {
+        <label [class.disabled]="disabled()">
+            <!-- Fake radio -->
+            <input type="radio"
+                [name]="name()"
+                [value]="opt.value"
+                [checked]="selectedValue === opt.value"
+                [disabled]="disabled()"
+                (change)="selectOption(opt.value)"
+            />
+
+            <!-- Real radio -->
+            <fa-icon size="lg" [class.checked]="selectedValue === opt.value" [icon]="selectedValue === opt.value ? ['far', 'circle-dot'] : ['far', 'circle']"></fa-icon>
+            <span>{{ opt.label }}</span>
+        </label>
+    }
+</div>

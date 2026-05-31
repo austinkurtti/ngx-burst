@@ -1,0 +1,75 @@
+@use '../../src/styles/theme';
+// @use '../../src/styles//variables' as vars;
+
+@mixin theme($overrides: ()) {
+    :root {
+        $radio-config: (
+            'color-unchecked': var(--ngxb-color-on-background),
+            'color-unchecked-disabled': var(--ngxb-color-disabled),
+            'color-checked': var(--ngxb-color-primary),
+            'color-checked-disabled': var(--ngxb-color-disabled)
+        );
+
+        $final-config: map-merge($radio-config, $overrides);
+        @include theme.def('radio', $final-config);
+    }
+
+    ngxb-radio-group {
+        display: block;
+
+        &.vertical .options {
+            flex-direction: column;
+
+            label:not(:first-child) {
+                margin-top: 1rem;
+                margin-left: 0;
+            }
+        }
+
+        legend {
+            margin-bottom: .25rem;
+            padding: 0;
+        }
+
+        .options {
+            display: flex;
+
+            label {
+                cursor: pointer;
+
+                &:not(:first-child) {
+                    margin-left: 1rem;
+                }
+
+                &.disabled {
+                    cursor: not-allowed;
+                    color:  var(--ngxb-checkbox-color-unchecked-disabled);
+
+                    fa-icon {
+                        color:  var(--ngxb-checkbox-color-unchecked-disabled);
+
+                        &.checked {
+                            color:  var(--ngxb-checkbox-color-checked-disabled);
+                        }
+                    }
+                }
+
+                fa-icon {
+                    color:  var(--ngxb-checkbox-color-unchecked);
+
+                    &.checked {
+                        color:  var(--ngxb-checkbox-color-checked);
+                    }
+                }
+            }
+
+            input[type=radio] {
+                height: 0;
+                margin: 0;
+                opacity: 0;
+                position: absolute;
+                width: 0;
+            }
+        }
+    }
+}

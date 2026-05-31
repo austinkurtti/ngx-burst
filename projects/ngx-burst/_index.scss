@@ -9,5 +9,6 @@
 @forward './checkbox/src/styles' as checkbox-* show checkbox-theme;
 @forward './dialog/src/styles' as dialog-* show dialog-theme;
 @forward './menu/src/styles' as menu-* show menu-theme;
+@forward './radio/src/styles' as radio-* show radio-theme;
 @forward './toggle/src/styles' as toggle-* show toggle-theme;
 @forward './tooltip/src/styles' as tooltip-* show tooltip-theme;

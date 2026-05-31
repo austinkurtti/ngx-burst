@@ -5,6 +5,7 @@ import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
 import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from 'ngx-burst/menu';
+import { NgxbRadioGroupComponent, RadioOption } from 'ngx-burst/radio';
 import { NgxbToggleComponent } from "ngx-burst/toggle";
 import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
 import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
@@ -23,6 +24,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
         NgxbMenuContentDirective,
         NgxbMenuDirective,
         NgxbMenuItemDirective,
+        NgxbRadioGroupComponent,
         NgxbToggleComponent,
         NgxbTooltipDirective
     ]
@@ -31,10 +33,14 @@ export class AppComponent {
     public accordionFullCollapsible = true;
     public accordionMultiExpandable = false;
     public checkboxDisabledValue = true;
-
     public dialogSize = NgxbDialogSize.minimal;
     public menuPosition = NgxbMenuPosition.topStart;
     public menuWidth = NgxbMenuWidth.auto;
+    public radioOptions: RadioOption[] = [
+        { label: 'First option', value: 'first' },
+        { label: 'Second option', value: 'second' },
+        { label: 'Third option', value: 'third' }
+    ];
     public tooltipEnabled = false;
 
     public ButtonType = NgxbButtonType;
