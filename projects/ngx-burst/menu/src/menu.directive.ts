@@ -123,7 +123,7 @@ export class NgxbMenuDirective {
 
     private _positionTop(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        this._renderer.setStyle(menuEl, 'top', `${hostRect.top - menuEl.clientHeight}px`);
+        this._renderer.setStyle(menuEl, 'top', `${hostRect.top - menuEl.clientHeight + window.scrollY}px`);
     }
 
     private _positionEnd(menuEl: any): void {
@@ -135,7 +135,7 @@ export class NgxbMenuDirective {
 
     private _positionBottom(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        this._renderer.setStyle(menuEl, 'top', `${hostRect.bottom}px`);
+        this._renderer.setStyle(menuEl, 'top', `${hostRect.bottom + window.scrollY}px`);
     }
 
     private _positionStart(menuEl: any): void {
