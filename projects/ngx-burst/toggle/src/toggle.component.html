@@ -1,0 +1,32 @@
+<div class="d-flex align-items-center justify-content-between">
+    <div>
+        <span [id]="id" (click)="toggle()">{{ label() }}</span>
+        @if (description() && descriptionAsTooltip()) {
+            <fa-icon
+                ngxbTooltip
+                class="ms-2"
+                [icon]="['fas', 'question-circle']"
+                [tooltipContent]="description()"
+            ></fa-icon>
+        }
+    </div>
+    <div role="checkbox"
+        class="toggle-container"
+        [attr.aria-labelledby]="id"
+        [tabindex]="disabled() ? -1 : 0"
+        [class.on]="value()"
+        [class.off]="!value()"
+        (click)="toggle()"
+        (keydown.enter)="toggle()"
+    >
+        <div class="toggle-background">
+            <fa-icon [icon]="['fas', 'check']"></fa-icon>
+            <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
+        </div>
+        <div class="toggle-foreground"></div>
+    </div>
+</div>
+
+@if (description() && !descriptionAsTooltip()) {
+    <p>{{ description() }}</p>
+}

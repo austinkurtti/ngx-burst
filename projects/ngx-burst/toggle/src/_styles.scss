@@ -1,0 +1,108 @@
+@use 'sass:math';
+
+@use '../../src/styles/theme';
+@use '../../src/styles//variables' as vars;
+
+@mixin theme($overrides: ()) {
+    :root {
+        $toggle-config: (
+            'color-background-off': vars.$color-gray-300,
+            'color-on-background-off': vars.$color-slate,
+            'color-background-on': var(--ngxb-color-positive),
+            'color-on-background-on': var(--ngxb-color-on-positive),
+            'color-foreground': vars.$color-white
+        );
+
+        $final-config: map-merge($toggle-config, $overrides);
+        @include theme.def('toggle', $final-config);
+    }
+
+    ngxb-toggle {
+        &.disabled {
+            opacity: .5;
+
+            span, .toggle-container {
+                cursor: not-allowed;
+            }
+        }
+
+        span {
+            cursor: pointer;
+        }
+
+        .toggle-container {
+            cursor: pointer;
+            position: relative;
+
+            &.off {
+                .toggle-background {
+                    background-color: var(--ngxb-toggle-color-background-off);
+                }
+
+                .toggle-foreground {
+                    left: math.div(vars.$core-size, 4);
+                }
+            }
+
+            &.on {
+                .toggle-background {
+                    background-color: var(--ngxb-toggle-color-background-on);
+                }
+
+                .toggle-foreground {
+                    left: vars.$core-size * 3.25;
+                }
+            }
+
+            .toggle-background {
+                align-items: center;
+                border-radius: vars.$core-size;
+                display: flex;
+                justify-content: space-between;
+                padding: math.div(vars.$core-size, 2);
+                transition: ease-in background-color .1s;
+                width: vars.$core-size * 4;
+
+                @media (prefers-reduced-motion) {
+                    transition: none;
+                }
+
+                fa-icon {
+                    display: flex;
+
+                    &:first-child {
+                        color: var(--ngxb-toggle-color-on-background-on);
+                        height: vars.$core-size;
+                        width: vars.$core-size;
+                    }
+
+                    &:last-child {
+                        color: var(--ngxb-color-on-background-off);
+                        height: vars.$core-size;
+                        width: vars.$core-size;
+                    }
+                }
+            }
+
+            .toggle-foreground {
+                background-color: var(--ngxb-toggle-color-foreground);
+                border-radius: vars.$core-size;
+                height: vars.$core-size * 1.5;
+                position: absolute;
+                top: math.div(vars.$core-size, 4);
+                transition: ease-in left .1s;
+                width: vars.$core-size * 1.5;
+
+                @media (prefers-reduced-motion) {
+                    transition: none;
+                }
+            }
+        }
+
+        p {
+            font-size: vars.$font-size * .8;
+            font-style: italic;
+            line-height: vars.$font-size;
+        }
+    }
+}

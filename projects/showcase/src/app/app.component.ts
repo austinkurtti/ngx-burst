@@ -5,6 +5,7 @@ import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
 import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from 'ngx-burst/menu';
+import { NgxbToggleComponent } from "ngx-burst/toggle";
 import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
 import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
 
@@ -22,6 +23,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
         NgxbMenuContentDirective,
         NgxbMenuDirective,
         NgxbMenuItemDirective,
+        NgxbToggleComponent,
         NgxbTooltipDirective
     ]
 })

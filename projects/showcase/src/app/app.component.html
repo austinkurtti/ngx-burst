@@ -76,7 +76,7 @@
 <section id="dialogs" class="container g-0">
     <h2 class="mb-3">Dialogs</h2>
     <div class="row g-0">
-        <div class="col-auto">
+        <div class="col">
             <label for="dialog-size" class="me-2">Choose size:</label>
             <select id="dialog-size" class="me-3" (change)="dialogSizeChange($event)">
                 <option [value]="DialogSize.minimal">Minimal</option>
@@ -150,6 +150,18 @@
                     </div>
                 </ng-template>
             </button>
+        </div>
+    </div>
+</section>
+
+<section id="toggles" class="container g-0">
+    <h2 class="mb-3">Toggles</h2>
+    <div class="row g-0">
+        <div class="col">
+            <ngxb-toggle label="Default"></ngxb-toggle>
+            <ngxb-toggle class="mt-3" label="Disabled" [disabled]="true"></ngxb-toggle>
+            <ngxb-toggle class="mt-3" label="With description" description="This is a more detailed description explaining what the toggle controls"></ngxb-toggle>
+            <ngxb-toggle class="mt-3" label="With description in tooltip" description="This is a more detailed description explaining what the toggle controls, but inside a tooltip" [descriptionAsTooltip]="true"></ngxb-toggle>
         </div>
     </div>
 </section>
