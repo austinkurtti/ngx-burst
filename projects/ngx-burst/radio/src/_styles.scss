@@ -45,22 +45,22 @@
 
                 &.disabled {
                     cursor: not-allowed;
-                    color:  var(--ngxb-checkbox-color-unchecked-disabled);
+                    color:  var(--ngxb-radio-color-unchecked-disabled);
 
                     fa-icon {
-                        color:  var(--ngxb-checkbox-color-unchecked-disabled);
+                        color:  var(--ngxb-radio-color-unchecked-disabled);
 
                         &.checked {
-                            color:  var(--ngxb-checkbox-color-checked-disabled);
+                            color:  var(--ngxb-radio-color-checked-disabled);
                         }
                     }
                 }
 
                 fa-icon {
-                    color:  var(--ngxb-checkbox-color-unchecked);
+                    color:  var(--ngxb-radio-color-unchecked);
 
                     &.checked {
-                        color:  var(--ngxb-checkbox-color-checked);
+                        color:  var(--ngxb-radio-color-checked);
                     }
                 }
             }
