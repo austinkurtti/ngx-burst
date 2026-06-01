@@ -45,6 +45,7 @@ export class AppComponent {
         { label: 'Second option', value: 'second' },
         { label: 'Third option', value: 'third' }
     ];
+    public textValue = 'Lorem ipsum';
     public tooltipEnabled = false;
 
     public ButtonType = NgxbButtonType;
