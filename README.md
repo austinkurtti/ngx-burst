@@ -8,11 +8,29 @@
 npm install @austinkurtti/ngx-burst
 ```
 
+### Provide
+
+In order to properly initialize each Directive/Component in the library, add the `provideNgxBurst()` function to the providers array in the app's root `ApplicationConfig`. Without this, some controls may not work or appear as expected.
+
+```ts
+import { provideNgxBurst } from 'ngx-burst/core';
+
+...
+
+bootstrapApplication(AppComponent, {
+    ...
+    providers: [
+        ...
+        provideNgxBurst()
+    ]
+})
+```
+
 ### Use
 
 Every Directive and Component is standalone. Simply add the needed classes into the imports array of the Module or standalone Component using them. Related Directives and Components will come from the same namespace. For example, all Accordion Directives can be imported from the `ngx-burst/accordion` namespace.
 
-```bash
+```ts
 import { NgxbButtonDirective } from 'ngx-burst/button';
 
 ...
