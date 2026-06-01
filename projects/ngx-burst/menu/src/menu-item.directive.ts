@@ -17,7 +17,7 @@ export class NgxbMenuItemDirective {
     public menu = inject(NgxbMenuDirective);
 
     @HostListener('click', ['$event']) itemClick(event: PointerEvent): void {
-        if (!this.disabled) {
+        if (!this.disabled()) {
             this.menuItemClick.emit();
             this.menu.close();
         }

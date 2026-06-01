@@ -1,0 +1,135 @@
+@use 'sass:color';
+@use 'sass:math';
+
+@use '../../src/styles/theme';
+@use '../../src/styles//variables' as vars;
+
+@mixin theme($overrides: ()) {
+    :root {
+        $select-config: (
+            'color-background': var(--ngxb-color-background),
+            'color-background-hover': color.adjust(vars.$color-white, $blackness: 10%),
+            'color-background-active': color.adjust(vars.$color-white, $blackness: 20%),
+            'color-border': var(--ngxb-color-on-background),
+            'color-placeholder': var(--ngxb-color-placeholder),
+            'color-disabled': var(--ngxb-color-disabled),
+
+            'color-option-background': var(--ngxb-color-background),
+            'color-option-background-hover': var(--ngxb-color-background-secondary),
+            'color-option-background-active': var(--ngxb-color-background-tertiary),
+            'color-on-option-background': var(--ngxb-color-on-background),
+            'color-option-selected-background': var(--ngxb-color-primary),
+            'color-option-selected-background-hover': var(--ngxb-color-primary-hover),
+            'color-option-selected-background-active': var(--ngxb-color-primary-active),
+            'color-on-option-selected-background': var(--ngxb-color-on-primary)
+        );
+
+        $final-config: map-merge($select-config, $overrides);
+        @include theme.def('select', $final-config);
+    }
+
+    ngxb-select {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &.disabled {
+            cursor: not-allowed;
+
+            label {
+                color: var(--ngxb-select-color-disabled);
+                cursor: not-allowed;
+            }
+        }
+
+        label {
+            margin-bottom: math.div(vars.$core-size, 4);
+        }
+
+        button[ngxbmenu].default {
+            background-color: var(--ngxb-select-color-background);
+            border-color: var(--ngxb-select-color-border);
+            border-radius: math.div(vars.$core-size, 4);
+            border-style: solid;
+            border-width: math.div(vars.$core-size, 8);
+            box-sizing: border-box;
+            font-size: vars.$font-size;
+            font-weight: normal;
+            height: vars.$core-size * 2;
+            overflow: hidden;
+            padding-block: math.div(vars.$core-size, 4);
+            padding-inline: math.div(vars.$core-size, 2) (vars.$core-size * 2.5);
+            text-align: start;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            &:hover:not(:disabled) {
+                background-color: var(--ngxb-select-color-background-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--ngxb-select-color-background-active);
+            }
+
+            &:disabled {
+                border-color: var(--ngxb-select-color-disabled);
+                color: var(--ngxb-select-color-disabled);
+
+                .selected-option.placeholder {
+                    color: var(--ngxb-select-color-disabled);
+                }
+            }
+
+            &:focus-visible {
+                outline-color: var(--ngxb-color-focus-outline);
+                outline-offset: math.div(vars.$core-size, -8);
+                outline-style: solid;
+                outline-width: math.div(vars.$core-size, 8);
+            }
+
+            .selected-option.placeholder {
+                color: var(--ngxb-select-color-placeholder);
+                font-style: italic;
+            }
+        }
+
+        fa-icon {
+            align-items: center;
+            bottom: math.div(vars.$core-size, 8);
+            display: flex;
+            height: calc((vars.$core-size * 2) - math.div(vars.$core-size, 4));
+            position: absolute;
+            right: math.div(vars.$core-size, 8);
+            width: calc((vars.$core-size * 2) - math.div(vars.$core-size, 4));
+        }
+
+        [role=menu] {
+            [role=menuitem] {
+                background-color: var(--ngxb-select-color-option-background);
+
+                &:not(.disabled) {
+                    &:hover {
+                        background-color: var(--ngxb-select-color-option-background-hover);
+                    }
+
+                    &:active {
+                        background-color: var(--ngxb-select-color-option-background-active);
+                    }
+
+                    &.selected {
+                        background-color: var(--ngxb-select-color-option-selected-background);
+                        color: var(--ngxb-select-color-on-option-selected-background);
+
+                        &:hover {
+                            background-color: var(--ngxb-select-color-option-selected-background-hover);
+                        }
+
+                        &:active {
+                            background-color: var(--ngxb-select-color-option-selected-background-active);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

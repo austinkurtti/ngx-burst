@@ -9,6 +9,8 @@ $config: (
     'color-on-background': vars.$color-black,
     'color-background-secondary': vars.$color-ivory,
     'color-on-background-secondary': vars.$color-slate,
+    'color-background-tertiary': vars.$color-gray-100,
+    'color-on-background-tertiary': vars.$color-slate,
 
     'color-primary': vars.$color-blue,
     'color-primary-hover': color.adjust(vars.$color-blue, $lightness: 10%),
@@ -26,6 +28,7 @@ $config: (
     'color-on-warning': vars.$color-black,
     'color-disabled': vars.$color-gray-300,
     'color-on-disabled': fns.adjust-to-contrast(vars.$color-gray-300, vars.$color-gray-300),
+    'color-placeholder': vars.$color-gray-600,
     'color-focus-outline': color.adjust(vars.$color-blue, $lightness: 20%),
 
     'font-family': vars.$font-family,

@@ -1,6 +1,8 @@
 import { Directive, ElementRef, HostListener, Renderer2, TemplateRef, ViewContainerRef, computed, contentChild, inject, input, output, signal } from '@angular/core';
 import { NgxbMenuPosition, NgxbMenuWidth } from './menu-settings';
 
+const BODY_TAG_NAME = 'BODY';
+
 /**
  * TODO:
  * - Add ARIA attributes
@@ -71,11 +73,15 @@ export class NgxbMenuDirective {
         menu.detectChanges();
 
         // Size the menu - this must be done before positioning
+        const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
         const menuEl = menu.rootNodes[0];
-        this._renderer.setStyle(menuEl, 'width', this.menuWidth());
+        if (this.menuWidth() === NgxbMenuWidth.matchParent) {
+            this._renderer.setStyle(menuEl, 'width', `${hostRect.width}px`);
+        } else {
+            this._renderer.setAttribute(menuEl, 'menu-width', this.menuWidth());
+        }
 
         // Position the menu
-        const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
         if (this._positionedAt(NgxbMenuPosition.topStart) || this._positionedAt(NgxbMenuPosition.topEnd)) {
             if (menuEl.clientHeight > hostRect.top) {
                 this._positionBottom(menuEl);
@@ -126,24 +132,40 @@ export class NgxbMenuDirective {
 
     private _positionTop(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        this._renderer.setStyle(menuEl, 'top', `${hostRect.top - menuEl.clientHeight + window.scrollY}px`);
+        const offsetParent = this._elementRef.nativeElement.offsetParent;
+        const offsetParentRect = offsetParent.getBoundingClientRect();
+        const topValue = offsetParent.tagName === BODY_TAG_NAME
+            ? hostRect.top - menuEl.clientHeight + window.scrollY
+            : (menuEl.clientHeight - (hostRect.top - offsetParentRect.top)) * -1;
+        this._renderer.setStyle(menuEl, 'top', `${topValue}px`);
     }
 
     private _positionEnd(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        let leftValue = hostRect.x + hostRect.width - menuEl.clientWidth;
+        const offsetParent = this._elementRef.nativeElement.offsetParent.tagName;
+        let leftValue = offsetParent === BODY_TAG_NAME
+            ? hostRect.x + hostRect.width - menuEl.clientWidth
+            : hostRect.width - menuEl.clientWidth;
         leftValue = leftValue < 0 ? 0 : leftValue;
         this._renderer.setStyle(menuEl, 'left', `${leftValue}px`);
     }
 
     private _positionBottom(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        this._renderer.setStyle(menuEl, 'top', `${hostRect.bottom + window.scrollY}px`);
+        const offsetParent = this._elementRef.nativeElement.offsetParent;
+        const offsetParentRect = offsetParent.getBoundingClientRect();
+        const topValue = offsetParent.tagName === BODY_TAG_NAME
+            ? hostRect.bottom + window.scrollY
+            : hostRect.height + (hostRect.top - offsetParentRect.top);
+        this._renderer.setStyle(menuEl, 'top', `${topValue}px`);
     }
 
     private _positionStart(menuEl: any): void {
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
-        let leftValue = hostRect.left;
+        const offsetParent = this._elementRef.nativeElement.offsetParent.tagName;
+        let leftValue = offsetParent === BODY_TAG_NAME
+            ? hostRect.left
+            : 0;
         leftValue = leftValue + menuEl.clientWidth > document.body.clientWidth ? document.body.clientWidth - menuEl.clientWidth : leftValue;
         this._renderer.setStyle(menuEl, 'left', `${leftValue}px`);
     }

@@ -1,0 +1,20 @@
+@if (label()) {
+    <label [for]="inputId()">{{ label() }}</label>
+}
+<button
+    ngxbButton
+    ngxbMenu
+    [id]="inputId()"
+    [menuWidth]="menuWidth"
+    [disabled]="disabled()"
+>
+    <span class="selected-option" [class.placeholder]="selectedOption() === null">{{ selectedOption() === null ? placeholder() : selectedOption()!.label }}</span>
+    <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+    <ng-template #menuContent>
+        <div ngxbMenuContent>
+            @for (opt of options(); track opt.value) {
+                <div ngxbMenuItem [class.selected]="selectedOption()?.value === opt.value" (menuItemClick)="optionClick(opt)">{{ opt.label }}</div>
+            }
+        </div>
+    </ng-template>
+</button>

@@ -179,6 +179,17 @@
     </div>
 </section>
 
+<section id="select" class="container g-0">
+    <h2 class="mb-3">Select</h2>
+    <div class="row g-0">
+        <div class="col">
+            <ngxb-select inputId="select-basic" [options]="selectOptions"></ngxb-select>
+            <ngxb-select class="mt-3" inputId="select-with-label-and-placeholder" label="Label goes here" placeholder="This is the placeholder" [options]="selectOptions"></ngxb-select>
+            <ngxb-select class="mt-3" inputId="select-disabled" label="Disabled" [options]="selectOptions" [disabled]="true" [(ngModel)]="selectDisabledValue"></ngxb-select>
+        </div>
+    </div>
+</section>
+
 <section id="text" class="container g-0">
     <h2 class="mb-3">Text</h2>
     <div class="row g-0">

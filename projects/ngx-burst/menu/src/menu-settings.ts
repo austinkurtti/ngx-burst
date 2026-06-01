@@ -7,9 +7,10 @@ export enum NgxbMenuPosition {
 
 export enum NgxbMenuWidth {
     auto            = 'auto',
-    full            = '100%',
-    threeQuarters   = '75%',
-    half            = '50%',
-    third           = '33.33%',
-    quarter         = '25%'
+    full            = 'full',
+    threeQuarters   = 'threeQuarters',
+    half            = 'half',
+    third           = 'third',
+    quarter         = 'quarter',
+    matchParent     = 'match'
 }

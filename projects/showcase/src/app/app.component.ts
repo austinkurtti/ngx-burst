@@ -7,7 +7,8 @@ import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
 import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from 'ngx-burst/menu';
-import { NgxbRadioGroupComponent, RadioOption } from 'ngx-burst/radio';
+import { NgxbRadioGroupComponent, NgxbRadioOption } from 'ngx-burst/radio';
+import { NgxbSelectComponent, NgxbSelectOption } from 'ngx-burst/select';
 import { NgxbTextComponent } from 'ngx-burst/text';
 import { NgxbToggleComponent } from "ngx-burst/toggle";
 import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
@@ -28,6 +29,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
         NgxbMenuDirective,
         NgxbMenuItemDirective,
         NgxbRadioGroupComponent,
+        NgxbSelectComponent,
         NgxbTextComponent,
         NgxbToggleComponent,
         NgxbTooltipDirective
@@ -40,12 +42,18 @@ export class AppComponent {
     public dialogSize = NgxbDialogSize.minimal;
     public menuPosition = NgxbMenuPosition.topStart;
     public menuWidth = NgxbMenuWidth.auto;
-    public radioOptions: RadioOption[] = [
+    public radioOptions: NgxbRadioOption[] = [
         { label: 'First option', value: 'first' },
         { label: 'Second option', value: 'second' },
         { label: 'Third option', value: 'third' }
     ];
     public radioDisabledValue = 'second';
+    public selectOptions: NgxbSelectOption<string>[] = [
+        { label: 'First option', value: 'first' },
+        { label: 'Second option', value: 'second' },
+        { label: 'Third option', value: 'third' }
+    ];
+    public selectDisabledValue = 'third';
     public textValue = 'Lorem ipsum';
     public tooltipEnabled = false;
 

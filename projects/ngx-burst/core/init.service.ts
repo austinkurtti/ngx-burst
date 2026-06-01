@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCircle as farCircle, faCircleDot as farCircleDot, faSquare as farSquare } from '@fortawesome/free-regular-svg-icons';
-import { faCheck as fasCheck, faCheckSquare as fasCheckSquare, faQuestionCircle as fasQuestionCircle, faXmark as fasXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown as fasCaretDown, faCheck as fasCheck, faCheckSquare as fasCheckSquare, faQuestionCircle as fasQuestionCircle, faXmark as fasXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +17,7 @@ export class NgxbInitService {
             farSquare,
 
             // Solid
+            fasCaretDown,
             fasCheck,
             fasCheckSquare,
             fasQuestionCircle,
