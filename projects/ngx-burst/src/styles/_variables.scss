@@ -53,6 +53,14 @@ $box-shadow-hard                        : 0 2px 10px 0 rgba($color: $color-black
 
 
 // --------------------------------------------------------
+// TRANSITIONS
+// --------------------------------------------------------
+$color-transition-duration              : .2s;
+$motion-transition-duration             : .1s;
+$transition-timing-function             : ease-in-out;
+
+
+// --------------------------------------------------------
 // Z-INDEXES
 // --------------------------------------------------------
 $z-index-base                           : 0;

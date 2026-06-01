@@ -58,6 +58,9 @@
 
                 fa-icon {
                     color:  var(--ngxb-radio-color-unchecked);
+                    transition-duration: vars.$color-transition-duration;
+                    transition-property: color;
+                    transition-timing-function: vars.$transition-timing-function;
 
                     &.checked {
                         color:  var(--ngxb-radio-color-checked);

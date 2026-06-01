@@ -60,7 +60,9 @@
                 display: flex;
                 justify-content: space-between;
                 padding: math.div(vars.$core-size, 2);
-                transition: ease-in background-color .1s;
+                transition-duration: vars.$color-transition-duration;
+                transition-property: background-color;
+                transition-timing-function: vars.$transition-timing-function;
                 width: vars.$core-size * 4;
 
                 @media (prefers-reduced-motion) {
@@ -90,7 +92,9 @@
                 height: vars.$core-size * 1.5;
                 position: absolute;
                 top: math.div(vars.$core-size, 4);
-                transition: ease-in left .1s;
+                transition-duration: vars.$motion-transition-duration;
+                transition-property: left;
+                transition-timing-function: vars.$transition-timing-function;
                 width: vars.$core-size * 1.5;
 
                 @media (prefers-reduced-motion) {

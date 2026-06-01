@@ -36,12 +36,12 @@
                 cursor: not-allowed;
             }
 
-            fa-icon.unchecked {
+            fa-icon {
                 color: var(--ngxb-checkbox-color-unchecked-disabled);
-            }
 
-            fa-icon.checked {
-                color: var(--ngxb-checkbox-color-checked-disabled);
+                &.checked {
+                    color: var(--ngxb-checkbox-color-checked-disabled);
+                }
             }
         }
 
@@ -54,11 +54,11 @@
         }
 
         fa-icon {
+            color: var(--ngxb-checkbox-color-unchecked);
             display: inline-block;
-
-            &.unchecked {
-                color: var(--ngxb-checkbox-color-unchecked);
-            }
+            transition-duration: vars.$color-transition-duration;
+            transition-property: color;
+            transition-timing-function: vars.$transition-timing-function;
 
             &.checked {
                 color: var(--ngxb-checkbox-color-checked);
