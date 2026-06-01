@@ -8,7 +8,8 @@
         $menu-config: (
             'color-background': var(--ngxb-color-background),
 
-            'item-color-background-hover': var(--ngxb-color-background-secondary)
+            'item-color-background-hover': var(--ngxb-color-background-secondary),
+            'item-color-background-active': var(--ngxb-color-background-tertiary)
         );
 
         $final-config: map-merge($menu-config, $overrides);
@@ -23,6 +24,25 @@
         box-shadow: vars.$box-shadow-hard;
         position: absolute;
         z-index: vars.$z-index-menu;
+
+        &[menu-width=auto] {
+            width: auto;
+        }
+        &[menu-width=full] {
+            width: 100%;
+        }
+        &[menu-width=threeQuarters] {
+            width: 75%;
+        }
+        &[menu-width=half] {
+            width: 50%;
+        }
+        &[menu-width=third] {
+            width: 33.33%;
+        }
+        &[menu-width=quarter] {
+            width: 25%;
+        }
 
         @media (prefers-contrast: more) {
             border: 1px solid var(--ngxb-color-primary);
@@ -42,6 +62,10 @@
 
                 &:hover {
                     background-color: var(--ngxb-menu-item-color-background-hover);
+                }
+
+                &:active {
+                    background-color: var(--ngxb-menu-item-color-background-active);
                 }
             }
 

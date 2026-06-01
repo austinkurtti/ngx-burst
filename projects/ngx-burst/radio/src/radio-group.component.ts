@@ -1,7 +1,7 @@
 import { Component, forwardRef, input, model } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RadioOption } from './radio-option';
+import { NgxbRadioOption } from './radio-option';
 
 @Component({
     selector: 'ngxb-radio-group',
@@ -23,7 +23,7 @@ import { RadioOption } from './radio-option';
 })
 export class NgxbRadioGroupComponent implements ControlValueAccessor {
     public name = input.required();
-    public options = input.required<RadioOption[]>();
+    public options = input.required<NgxbRadioOption[]>();
     public label = input('');
     public vertical = input(false);
     public disabled = model(false);

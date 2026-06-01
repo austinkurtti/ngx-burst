@@ -42,7 +42,7 @@
 
         &.with-button {
             input {
-                padding-right: vars.$core-size * 2.5;
+                padding-inline-end: vars.$core-size * 2.5;
             }
 
             button {
@@ -73,6 +73,7 @@
             white-space: nowrap;
 
             &::placeholder {
+                color: var(--ngxb-color-placeholder);
                 font-style: italic;
             }
 

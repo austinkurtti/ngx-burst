@@ -1,5 +1,5 @@
 import { Component, forwardRef, input, model, output } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
@@ -21,7 +21,6 @@ import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
     ],
     imports: [
         FontAwesomeModule,
-        FormsModule,
         NgxbButtonDirective,
         NgxbTooltipDirective
     ]
