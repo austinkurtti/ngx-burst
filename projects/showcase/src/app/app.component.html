@@ -173,7 +173,7 @@
     <div class="row g-0">
         <div class="col">
             <ngxb-radio-group name="basic-radio-group" label="Basic" [options]="radioOptions"></ngxb-radio-group>
-            <ngxb-radio-group class="mt-3" name="disabled-radio-group" label="Disabled" [options]="radioOptions" [disabled]="true"></ngxb-radio-group>
+            <ngxb-radio-group class="mt-3" name="disabled-radio-group" label="Disabled" [options]="radioOptions" [disabled]="true" [(ngModel)]="radioDisabledValue"></ngxb-radio-group>
             <ngxb-radio-group class="mt-3" name="vertical-radio-group" label="Vertical" [options]="radioOptions" [vertical]="true"></ngxb-radio-group>
         </div>
     </div>
