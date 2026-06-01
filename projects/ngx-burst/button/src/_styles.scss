@@ -7,9 +7,9 @@
 @mixin theme($overrides: ()) {
     :root {
         $button-config: (
-            'color-default': rgba($color: vars.$color-slate, $alpha: 0),
-            'color-default-hover': rgba($color: vars.$color-slate, $alpha: .1),
-            'color-default-active': rgba($color: vars.$color-slate, $alpha: .2),
+            'color-default': vars.$color-white,
+            'color-default-hover': color.adjust(vars.$color-white, $blackness: 10%),
+            'color-default-active': color.adjust(vars.$color-white, $blackness: 20%),
             'color-on-default': var(--ngxb-color-on-background),
 
             'color-primary': var(--ngxb-color-primary),
@@ -17,9 +17,9 @@
             'color-primary-active': var(--ngxb-color-primary-active),
             'color-on-primary': var(--ngxb-color-on-primary),
 
-            'color-subtle': rgba($color: vars.$color-slate, $alpha: 0),
-            'color-subtle-hover': rgba($color: vars.$color-slate, $alpha: .1),
-            'color-subtle-active': rgba($color: vars.$color-slate, $alpha: .2),
+            'color-subtle': vars.$color-white,
+            'color-subtle-hover': color.adjust(vars.$color-white, $blackness: 10%),
+            'color-subtle-active': color.adjust(vars.$color-white, $blackness: 20%),
             'color-on-subtle': var(--ngxb-color-on-background),
 
             'color-positive': var(--ngxb-color-positive),
@@ -41,14 +41,19 @@
     }
 
     .ngxb-button {
-        border: none;
         border-radius: math.div(vars.$core-size, 4);
+        border-style: solid;
+        border-width: math.div(vars.$core-size, 8);
+        display: inline-block;
         font-weight: bold;
-        padding: math.div(vars.$core-size, 2);
+        height: vars.$core-size * 2;
+        padding-block: math.div(vars.$core-size, 8);
+        padding-inline: math.div(vars.$core-size, 2);
+        text-align: center;
 
         &.default {
             background-color: var(--ngxb-button-color-default);
-            border: solid 1px var(--ngxb-color-on-background);
+            border-color: var(--ngxb-color-on-background);
             color: var(--ngxb-button-color-on-default);
 
             &:hover:not(:disabled) {
@@ -62,53 +67,65 @@
 
         &.primary {
             background-color: var(--ngxb-button-color-primary);
+            border-color: var(--ngxb-button-color-primary);
             color: var(--ngxb-button-color-on-primary);
 
             &:hover:not(:disabled) {
                 background-color: var(--ngxb-button-color-primary-hover);
+                border-color: var(--ngxb-button-color-primary-hover);
             }
 
             &:active:not(:disabled) {
                 background-color: var(--ngxb-button-color-primary-active);
+                border-color: var(--ngxb-button-color-primary-active);
             }
         }
 
         &.subtle {
             background-color: var(--ngxb-button-color-subtle);
+            border-color: var(--ngxb-button-color-subtle);
             color: var(--ngxb-button-color-on-subtle);
 
             &:hover:not(:disabled) {
                 background-color: var(--ngxb-button-color-subtle-hover);
+                border-color: var(--ngxb-button-color-subtle-hover);
             }
 
             &:active:not(:disabled) {
                 background-color: var(--ngxb-button-color-subtle-active);
+                border-color: var(--ngxb-button-color-subtle-active);
             }
         }
 
         &.positive {
             background-color: var(--ngxb-button-color-positive);
+            border-color: var(--ngxb-button-color-positive);
             color: var(--ngxb-button-color-on-positive);
 
             &:hover:not(:disabled) {
                 background-color: var(--ngxb-button-color-positive-hover);
+                border-color: var(--ngxb-button-color-positive-hover);
             }
 
             &:active:not(:disabled) {
                 background-color: var(--ngxb-button-color-positive-active);
+                border-color: var(--ngxb-button-color-positive-active);
             }
         }
 
         &.negative {
             background-color: var(--ngxb-button-color-negative);
+            border-color: var(--ngxb-button-color-negative);
             color: var(--ngxb-button-color-on-negative);
 
             &:hover:not(:disabled) {
                 background-color: var(--ngxb-button-color-negative-hover);
+                border-color: var(--ngxb-button-color-negative-hover);
             }
 
             &:active:not(:disabled) {
                 background-color: var(--ngxb-button-color-negative-active);
+                border-color: var(--ngxb-button-color-negative-active);
             }
         }
 
