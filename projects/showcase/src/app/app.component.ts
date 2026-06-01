@@ -40,8 +40,30 @@ export class AppComponent {
     public accordionMultiExpandable = false;
     public checkboxDisabledValue = true;
     public dialogSize = NgxbDialogSize.minimal;
+    public dialogSizeOptions: NgxbSelectOption<NgxbDialogSize>[] = [
+        { label: 'Minimal', value: NgxbDialogSize.minimal },
+        { label: 'Small', value: NgxbDialogSize.small },
+        { label: 'Medium', value: NgxbDialogSize.medium },
+        { label: 'Large', value: NgxbDialogSize.large },
+        { label: 'Fullscreen', value: NgxbDialogSize.fullscreen }
+    ];
     public menuPosition = NgxbMenuPosition.topStart;
+    public menuPositionOptions: NgxbSelectOption<NgxbMenuPosition>[] = [
+        { label: 'Top Start', value: NgxbMenuPosition.topStart },
+        { label: 'Top End', value: NgxbMenuPosition.topEnd },
+        { label: 'Bottom Start', value: NgxbMenuPosition.bottomStart },
+        { label: 'Bottom End', value: NgxbMenuPosition.bottomEnd }
+    ];
     public menuWidth = NgxbMenuWidth.auto;
+    public menuWidthOptions: NgxbSelectOption<NgxbMenuWidth>[] = [
+        { label: 'Auto', value: NgxbMenuWidth.auto },
+        { label: 'Match Parent', value: NgxbMenuWidth.matchParent },
+        { label: 'Full', value: NgxbMenuWidth.full },
+        { label: 'Three Quarters', value: NgxbMenuWidth.threeQuarters },
+        { label: 'Half', value: NgxbMenuWidth.half },
+        { label: 'Third', value: NgxbMenuWidth.third },
+        { label: 'Quarter', value: NgxbMenuWidth.quarter }
+    ];
     public radioOptions: NgxbRadioOption[] = [
         { label: 'First option', value: 'first' },
         { label: 'Second option', value: 'second' },

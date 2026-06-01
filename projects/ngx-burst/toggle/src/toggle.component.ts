@@ -16,7 +16,7 @@ import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
 })
 export class NgxbToggleComponent implements OnInit {
     public value = model(false);
-    public label = input('');
+    public label = input.required<string>();
     public description = input('');
     public descriptionAsTooltip = input(false);
     public disabled = input(false);

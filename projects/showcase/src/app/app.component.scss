@@ -22,12 +22,6 @@ section {
         padding-bottom: ngxb.$core-size * 4;
     }
 
-    &#button, &#menu {
-        button:not(:first-child) {
-            margin-left: ngxb.$core-size;
-        }
-    }
-
     &#tooltip {
         div[ngxbtooltip] {
             border: 1px solid ngxb.$color-black;

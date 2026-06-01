@@ -67,11 +67,11 @@
     <div class="row g-0">
         <div class="col">
             <button ngxbButton>Default</button>
-            <button ngxbButton [type]="ButtonType.primary">Primary</button>
-            <button ngxbButton [type]="ButtonType.subtle">Subtle</button>
-            <button ngxbButton [type]="ButtonType.positive">Positive</button>
-            <button ngxbButton [type]="ButtonType.negative">Negative</button>
-            <button ngxbButton disabled>Disabled</button>
+            <button ngxbButton class="ms-3" [type]="ButtonType.primary">Primary</button>
+            <button ngxbButton class="ms-3" [type]="ButtonType.subtle">Subtle</button>
+            <button ngxbButton class="ms-3" [type]="ButtonType.positive">Positive</button>
+            <button ngxbButton class="ms-3" [type]="ButtonType.negative">Negative</button>
+            <button ngxbButton class="ms-3" disabled>Disabled</button>
         </div>
     </div>
 </section>
@@ -90,16 +90,9 @@
 <section id="dialog" class="container g-0">
     <h2 class="mb-3">Dialog</h2>
     <div class="row g-0">
-        <div class="col">
-            <label for="dialog-size" class="me-2">Choose size:</label>
-            <select id="dialog-size" class="me-3" (change)="dialogSizeChange($event)">
-                <option [value]="DialogSize.minimal">Minimal</option>
-                <option [value]="DialogSize.small">Small</option>
-                <option [value]="DialogSize.medium">Medium</option>
-                <option [value]="DialogSize.large">Large</option>
-                <option [value]="DialogSize.fullscreen">Fullscreen</option>
-            </select>
+        <div class="col-auto d-flex">
             <button ngxbButton (click)="openDialog()">Open dialog</button>
+            <ngxb-select class="ms-3" inputId="choose-dialog-size" placeholder="Choose a size" [options]="dialogSizeOptions" [(ngModel)]="dialogSize"></ngxb-select>
         </div>
     </div>
 </section>
@@ -118,7 +111,7 @@
                     </div>
                 </ng-template>
             </button>
-            <button ngxbButton ngxbMenu>
+            <button ngxbButton ngxbMenu class="ms-3">
                 <span>Disabled item</span>
                 <ng-template #menuContent>
                     <div ngxbMenuContent>
@@ -128,13 +121,10 @@
                     </div>
                 </ng-template>
             </button>
-            <label for="menu-position" class="ms-5 me-2">Choose position:</label>
-            <select id="menu-position" (change)="menuPositionChange($event)">
-                <option [value]="MenuPosition.topStart">TopStart</option>
-                <option [value]="MenuPosition.topEnd">TopEnd</option>
-                <option [value]="MenuPosition.bottomStart">BottomStart</option>
-                <option [value]="MenuPosition.bottomEnd">BottomEnd</option>
-            </select>
+        </div>
+    </div>
+    <div class="row g-0 mt-3">
+        <div class="col-auto d-flex">
             <button ngxbButton ngxbMenu [menuPosition]="menuPosition">
                 <span>Positioned menu</span>
                 <ng-template #menuContent>
@@ -145,15 +135,11 @@
                     </div>
                 </ng-template>
             </button>
-            <label for="menu-width" class="ms-5 me-2">Choose width:</label>
-            <select id="menu-width" (change)="menuWidthChange($event)">
-                <option [value]="MenuWidth.auto">Auto</option>
-                <option [value]="MenuWidth.full">Full</option>
-                <option [value]="MenuWidth.threeQuarters">ThreeQuarters</option>
-                <option [value]="MenuWidth.half">Half</option>
-                <option [value]="MenuWidth.third">Third</option>
-                <option [value]="MenuWidth.quarter">Quarter</option>
-            </select>
+            <ngxb-select class="ms-3" inputId="choose-menu-position" placeholder="Choose a position" [options]="menuPositionOptions" [(ngModel)]="menuPosition"></ngxb-select>
+        </div>
+    </div>
+    <div class="row g-0 mt-3">
+        <div class="col-auto d-flex">
             <button ngxbButton ngxbMenu [menuWidth]="menuWidth">
                 <span>Sized menu</span>
                 <ng-template #menuContent>
@@ -164,6 +150,7 @@
                     </div>
                 </ng-template>
             </button>
+            <ngxb-select class="ms-3" inputId="choose-menu-width" placeholder="Choose a width" [options]="menuWidthOptions" [(ngModel)]="menuWidth"></ngxb-select>
         </div>
     </div>
 </section>
@@ -172,7 +159,8 @@
     <h2 class="mb-3">Radio</h2>
     <div class="row g-0">
         <div class="col">
-            <ngxb-radio-group name="basic-radio-group" label="Basic" [options]="radioOptions"></ngxb-radio-group>
+            <ngxb-radio-group name="basic-radio-group" [options]="radioOptions"></ngxb-radio-group>
+            <ngxb-radio-group class="mt-3" name="labeled-radio-group" label="Label goes here" [options]="radioOptions"></ngxb-radio-group>
             <ngxb-radio-group class="mt-3" name="disabled-radio-group" label="Disabled" [options]="radioOptions" [disabled]="true" [(ngModel)]="radioDisabledValue"></ngxb-radio-group>
             <ngxb-radio-group class="mt-3" name="vertical-radio-group" label="Vertical" [options]="radioOptions" [vertical]="true"></ngxb-radio-group>
         </div>
