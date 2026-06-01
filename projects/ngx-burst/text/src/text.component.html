@@ -1,0 +1,25 @@
+<label [for]="inputId()">{{ label() }}</label>
+<input #textInput
+    type="text"
+    tabindex="0"
+    autocomplete="off"
+    [id]="inputId()"
+    [placeholder]="placeholder()"
+    [minLength]="minLength()"
+    [maxLength]="maxLength()"
+    [value]="value"
+    (input)="onInput($event)"
+/>
+@if (buttonIcon()) {
+    <button
+        ngxbButton
+        ngxbTooltip
+        class="icon-button"
+        [type]="buttonType"
+        [tooltipContent]="buttonTooltip()"
+        [tooltipEnabled]="buttonTooltip() ? true : false"
+        (click)="buttonClick.emit()"
+    >
+        <fa-icon [icon]="buttonIcon()"></fa-icon>
+    </button>
+}

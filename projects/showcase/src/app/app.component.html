@@ -165,6 +165,17 @@
     </div>
 </section>
 
+<section id="text" class="container g-0">
+    <h2 class="mb-3">Text</h2>
+    <div class="row g-0">
+        <div class="col">
+            <ngxb-text inputId="text-basic" label="Input label"></ngxb-text>
+            <ngxb-text class="mt-3" inputId="text-with-placeholder" label="With placeholder" placeholder="This is the placeholder"></ngxb-text>
+            <ngxb-text class="mt-3" inputId="text-with-icon-button" label="Button after input" [maxLength]="1000" [buttonIcon]="['fas', 'triangle-exclamation']" (buttonClick)="alert('Button clicked!')"></ngxb-text>
+        </div>
+    </div>
+</section>
+
 <section id="toggle" class="container g-0">
     <h2 class="mb-3">Toggle</h2>
     <div class="row g-0">

@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { NgxbAccordionContentDirective, NgxbAccordionGroupDirective, NgxbAccordionHeaderDirective } from 'ngx-burst/accordion';
 import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
 import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from 'ngx-burst/menu';
 import { NgxbRadioGroupComponent, RadioOption } from 'ngx-burst/radio';
+import { NgxbTextComponent } from 'ngx-burst/text';
 import { NgxbToggleComponent } from "ngx-burst/toggle";
 import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
 import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
@@ -25,6 +28,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
         NgxbMenuDirective,
         NgxbMenuItemDirective,
         NgxbRadioGroupComponent,
+        NgxbTextComponent,
         NgxbToggleComponent,
         NgxbTooltipDirective
     ]
@@ -50,6 +54,11 @@ export class AppComponent {
     public TooltipPosition = NgxbTooltipPosition;
 
     private _dialogService = inject(NgxbDialogService);
+    private _iconLib = inject(FaIconLibrary);
+
+    public ngOnInit(): void {
+        this._iconLib.addIcons(faTriangleExclamation);
+    }
 
     public dialogSizeChange(event: Event): void {
         this.dialogSize = parseInt((<HTMLSelectElement>(event.target)).value);
@@ -70,5 +79,9 @@ export class AppComponent {
 
     public menuWidthChange(event: Event): void {
         this.menuWidth = <NgxbMenuWidth>(<HTMLSelectElement>(event.target)).value;
+    }
+
+    public alert(message: string) {
+        window.alert(message);
     }
 }

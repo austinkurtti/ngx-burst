@@ -1,0 +1,46 @@
+@use 'sass:math';
+
+@use '../../src/styles/theme';
+@use '../../src/styles//variables' as vars;
+
+@mixin theme($overrides: ()) {
+    :root {
+        $text-config: (
+        );
+
+        $final-config: map-merge($text-config, $overrides);
+        @include theme.def('text', $final-config);
+    }
+
+    ngxb-text {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &.with-icon {
+            input {
+                padding-right: vars.$core-size * 2.5;
+            }
+        }
+
+        label {
+            margin-bottom: math.div(vars.$core-size, 4);
+        }
+
+        input {
+            border-radius: math.div(vars.$core-size, 4);
+            border-style: solid;
+            font-size: vars.$font-size;
+            overflow: hidden !important;
+            padding: math.div(vars.$core-size, 2) math.div(vars.$core-size, 4);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        button {
+            bottom: math.div(vars.$core-size, 4);
+            position: absolute;
+            right: math.div(vars.$core-size, 4);
+        }
+    }
+}
