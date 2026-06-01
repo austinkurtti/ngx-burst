@@ -7,7 +7,8 @@ import { RadioOption } from './radio-option';
     selector: 'ngxb-radio-group',
     templateUrl: './radio-group.component.html',
     host: {
-        '[class.vertical]': 'vertical()'
+        '[class.vertical]': 'vertical()',
+        '[class.disabled]': 'disabled()'
     },
     providers: [
         {
