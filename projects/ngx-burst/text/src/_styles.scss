@@ -36,6 +36,7 @@
             &.with-button button:disabled {
                 background-color: transparent;
                 border-color: transparent;
+                color: var(--ngxb-text-color-disabled);
             }
         }
 
