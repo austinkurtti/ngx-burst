@@ -4,6 +4,7 @@
     tabindex="0"
     autocomplete="off"
     [id]="inputId()"
+    [disabled]="disabled()"
     [placeholder]="placeholder()"
     [minLength]="minLength()"
     [maxLength]="maxLength()"
@@ -16,6 +17,7 @@
         ngxbTooltip
         class="icon-button"
         [type]="buttonType"
+        [disabled]="disabled()"
         [tooltipContent]="buttonTooltip()"
         [tooltipEnabled]="buttonTooltip() ? true : false"
         (click)="buttonClick.emit()"

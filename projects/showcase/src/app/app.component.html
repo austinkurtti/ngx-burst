@@ -172,6 +172,7 @@
             <ngxb-text inputId="text-basic" label="Input label"></ngxb-text>
             <ngxb-text class="mt-3" inputId="text-with-placeholder" label="With placeholder" placeholder="This is the placeholder"></ngxb-text>
             <ngxb-text class="mt-3" inputId="text-with-icon-button" label="Button after input" [maxLength]="1000" [buttonIcon]="['fas', 'triangle-exclamation']" (buttonClick)="alert('Button clicked!')"></ngxb-text>
+            <ngxb-text class="mt-3" inputId="text-disabled" label="Disabled" [disabled]="true" [buttonIcon]="['fas', 'triangle-exclamation']" (buttonClick)="alert('This should not happen')"></ngxb-text>
         </div>
     </div>
 </section>
