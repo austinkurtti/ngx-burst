@@ -1,6 +1,5 @@
-import { Component, EventEmitter, inject, input, model, OnInit, Output } from '@angular/core';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCheck as fasCheck, faQuestionCircle as fasQuestionCircle, faXmark as fasXmark } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, input, model, OnInit, Output } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
 
 @Component({
@@ -24,8 +23,6 @@ export class NgxbToggleComponent implements OnInit {
 
     @Output() valueChange = new EventEmitter<boolean>();
 
-    private _iconLib = inject(FaIconLibrary);
-
     private _id: string = '';
 
     public get id(): string {
@@ -34,8 +31,6 @@ export class NgxbToggleComponent implements OnInit {
 
     public ngOnInit(): void {
         this._id = crypto.randomUUID().toString();
-
-        this._iconLib.addIcons(fasCheck, fasQuestionCircle, fasXmark);
     }
 
     public toggle(): void {

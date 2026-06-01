@@ -1,8 +1,6 @@
-import { Component, forwardRef, inject, model, OnInit } from '@angular/core';
+import { Component, forwardRef, model } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSquare as farSquare } from '@fortawesome/free-regular-svg-icons';
-import { faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
     selector: 'ngxb-checkbox',
@@ -21,18 +19,12 @@ import { faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-ico
         FontAwesomeModule
     ]
 })
-export class NgxbCheckboxComponent implements OnInit, ControlValueAccessor {
+export class NgxbCheckboxComponent implements ControlValueAccessor {
     public disabled = model(false);
 
     public checked = false;
     public onChange = (value: boolean) => {};
     public onTouched = () => {};
-
-    private _iconLib = inject(FaIconLibrary);
-
-    public ngOnInit(): void {
-        this._iconLib.addIcons(farSquare, fasCheckSquare);
-    }
 
     public toggleCheck(): void {
         if (this.disabled()) {

@@ -1,7 +1,6 @@
-import { Component, forwardRef, inject, input, model, OnInit } from '@angular/core';
+import { Component, forwardRef, input, model } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCircle as farCircle, faCircleDot as farCircleDot } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RadioOption } from './radio-option';
 
 @Component({
@@ -21,7 +20,7 @@ import { RadioOption } from './radio-option';
         FontAwesomeModule
     ]
 })
-export class NgxbRadioGroupComponent implements OnInit, ControlValueAccessor {
+export class NgxbRadioGroupComponent implements ControlValueAccessor {
     public name = input.required();
     public options = input.required<RadioOption[]>();
     public label = input('');
@@ -31,12 +30,6 @@ export class NgxbRadioGroupComponent implements OnInit, ControlValueAccessor {
     public selectedValue: string | null = null;
     public onChange = (value: string) => {};
     public onTouched = () => {};
-
-    private _iconLib = inject(FaIconLibrary);
-
-    public ngOnInit(): void {
-        this._iconLib.addIcons(farCircle, farCircleDot);
-    }
 
     public selectOption(value: string): void {
         if (this.disabled()) {
