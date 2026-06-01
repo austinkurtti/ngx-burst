@@ -9,7 +9,7 @@ import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
     selector: 'ngxb-text',
     templateUrl: './text.component.html',
     host: {
-        '[class.with-icon]': '!!buttonIcon()'
+        '[class.with-button]': '!!buttonIcon()'
     },
     providers: [
         {

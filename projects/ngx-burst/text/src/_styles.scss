@@ -17,9 +17,16 @@
         flex-direction: column;
         position: relative;
 
-        &.with-icon {
+        &.with-button {
             input {
                 padding-right: vars.$core-size * 2.5;
+            }
+
+            button {
+                bottom: math.div(vars.$core-size, 8);
+                height: calc((vars.$core-size * 2) - math.div(vars.$core-size, 4));
+                position: absolute;
+                right: math.div(vars.$core-size, 8);
             }
         }
 
@@ -31,17 +38,14 @@
             border-radius: math.div(vars.$core-size, 4);
             border-style: solid;
             border-width: math.div(vars.$core-size, 8);
+            box-sizing: border-box;
             font-size: vars.$font-size;
+            height: vars.$core-size * 2;
             overflow: hidden !important;
-            padding: math.div(vars.$core-size, 2) math.div(vars.$core-size, 4);
+            padding-block: math.div(vars.$core-size, 4);
+            padding-inline: math.div(vars.$core-size, 2);
             text-overflow: ellipsis;
             white-space: nowrap;
-        }
-
-        button {
-            bottom: math.div(vars.$core-size, 4);
-            position: absolute;
-            right: math.div(vars.$core-size, 4);
         }
     }
 }
