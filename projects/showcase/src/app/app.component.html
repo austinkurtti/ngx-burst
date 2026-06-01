@@ -43,6 +43,20 @@
                 <p ngxbAccordionContent contentId="second">
                     <span>Second content</span>
                 </p>
+                <div ngxbAccordionHeader
+                    #thirdHeader="ngxbAccordionHeader"
+                    contentId="third"
+                    class="d-flex justify-content-between"
+                >
+                    <span>Third</span>
+                    <i class="fas"
+                        [class.fa-minus]="thirdHeader.contentExpanded()"
+                        [class.fa-plus]="!thirdHeader.contentExpanded()"
+                    ></i>
+                </div>
+                <p ngxbAccordionContent contentId="third">
+                    <span>Third content</span>
+                </p>
             </div>
         </div>
     </div>
@@ -216,8 +230,7 @@
         </div>
         <div class="col-auto text-center">
             <div ngxbTooltip [tooltipContent]="'Can you see me now?'" [tooltipEnabled]="tooltipEnabled">Enabled/Disabled</div>
-            <input id="tooltip-enabled-checkbox" type="checkbox" [checked]="tooltipEnabled" (change)="tooltipEnabled = !tooltipEnabled">
-            <label for="tooltip-enabled-checkbox" class="me-3">Enabled</label>
+            <ngxb-checkbox [(ngModel)]="tooltipEnabled">Enabled</ngxb-checkbox>
         </div>
         <div class="col-auto text-center">
             <div ngxbTooltip [tooltipContent]="'TODO'">Rich content</div>

@@ -38,6 +38,7 @@
 
             label {
                 cursor: pointer;
+                padding-inline-end: math.div(vars.$core-size, 4);
 
                 &:not(:first-child) {
                     margin-left: vars.$core-size;
@@ -54,6 +55,14 @@
                             color:  var(--ngxb-radio-color-checked-disabled);
                         }
                     }
+                }
+
+                &:focus-visible {
+                    border-radius: math.div(vars.$core-size, 8);
+                    outline-color: var(--ngxb-color-focus-outline);
+                    outline-offset: math.div(vars.$core-size, 8);
+                    outline-style: solid;
+                    outline-width: math.div(vars.$core-size, 8);
                 }
 
                 fa-icon {

@@ -26,6 +26,7 @@ $config: (
     'color-on-warning': vars.$color-black,
     'color-disabled': vars.$color-gray-300,
     'color-on-disabled': fns.adjust-to-contrast(vars.$color-gray-300, vars.$color-gray-300),
+    'color-focus-outline': color.adjust(vars.$color-blue, $lightness: 20%),
 
     'font-family': vars.$font-family,
     'font-size': vars.$font-size

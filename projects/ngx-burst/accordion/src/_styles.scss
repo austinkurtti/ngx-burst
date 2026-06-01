@@ -1,9 +1,12 @@
+@use 'sass:math';
+
 @use '../../src/styles/theme';
 @use '../../src/styles/variables' as vars;
 
 @mixin theme($overrides: ()) {
     :root {
         $accordion-config: (
+            'group-color-background': var(--ngxb-color-background),
             'group-color-border': var(--ngxb-color-on-background),
 
             'header-color-border': var(--ngxb-color-on-background),
@@ -17,18 +20,47 @@
     }
 
     .ngxb-accordion-group {
-        border: 1px solid var(--ngxb-accordion-group-color-border);
+        background-color: var(--ngxb-accordion-group-color-background);
+        border-color: var(--ngxb-accordion-group-color-border);
+        border-style: solid;
+        border-width: math.div(vars.$core-size, 8);
+        border-radius: math.div(vars.$core-size, 4);
 
         .ngxb-accordion-header {
             cursor: pointer;
             padding: vars.$core-size;
 
-            &:not(.expanded):not(:last-of-type) {
-                border-bottom: 1px solid var(--ngxb-accordion-header-color-border);
+            &:not(.expanded) {
+                &:first-of-type {
+                    border-top-right-radius: math.div(vars.$core-size, 4);
+                    border-top-left-radius: math.div(vars.$core-size, 4);
+                    border-bottom-right-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+
+                &:not(:last-of-type) {
+                    border-bottom-color: var(--ngxb-accordion-header-color-border);
+                    border-bottom-style: solid;
+                    border-bottom-width: math.div(vars.$core-size, 8);
+                }
+
+                &:last-of-type {
+                    border-top-right-radius: 0;
+                    border-top-left-radius: 0;
+                    border-bottom-right-radius: math.div(vars.$core-size, 4);
+                    border-bottom-left-radius: math.div(vars.$core-size, 4);
+                }
             }
 
             &:hover {
                 background-color: var(--ngxb-accordion-header-color-hover);
+            }
+
+            &:focus-visible {
+                outline-color: var(--ngxb-color-focus-outline);
+                outline-offset: math.div(vars.$core-size, 4);
+                outline-style: solid;
+                outline-width: math.div(vars.$core-size, 8);
             }
         }
 
@@ -38,7 +70,9 @@
             padding: vars.$core-size;
 
             &:not(:last-of-type) {
-                border-bottom: 1px solid var(--ngxb-accordion-content-color-border);
+                border-bottom-color: var(--ngxb-accordion-content-color-border);
+                border-bottom-style: solid;
+                border-bottom-width: math.div(vars.$core-size, 8);
             }
         }
     }

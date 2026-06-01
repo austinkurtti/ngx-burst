@@ -1,9 +1,9 @@
-<label class="ngxb-checkbox" [class.disabled]="disabled()">
+<label class="ngxb-checkbox" [tabindex]="disabled() ? -1 : 0" [class.disabled]="disabled()" (keydown.enter)="toggleCheck()">
     <!-- Fake checkbox -->
-    <input type="checkbox" (change)="toggleCheck()"/>
+    <input type="checkbox" tabindex="-1" (change)="toggleCheck()"/>
 
     <!-- Real checkbox -->
-    <fa-icon [class.checked]="checked" size="lg" [icon]="checked ? ['fas', 'check-square'] : ['far', 'square']"></fa-icon>
+    <fa-icon size="lg" [class.checked]="checked" [icon]="checked ? ['fas', 'check-square'] : ['far', 'square']"></fa-icon>
     <span>
         <ng-content></ng-content>
     </span>

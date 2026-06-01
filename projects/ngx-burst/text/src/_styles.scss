@@ -70,6 +70,13 @@
             padding-inline: math.div(vars.$core-size, 2);
             text-overflow: ellipsis;
             white-space: nowrap;
+
+            &:focus-visible {
+                outline-color: var(--ngxb-color-focus-outline);
+                outline-offset: math.div(vars.$core-size, -8);
+                outline-style: solid;
+                outline-width: math.div(vars.$core-size, 8);
+            }
         }
     }
 }

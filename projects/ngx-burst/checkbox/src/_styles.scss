@@ -18,6 +18,7 @@
 
     .ngxb-checkbox {
         display: inline-block;
+        padding-inline-end: math.div(vars.$core-size, 4);
         position: relative;
 
         &:not(.disabled) {
@@ -43,6 +44,14 @@
                     color: var(--ngxb-checkbox-color-checked-disabled);
                 }
             }
+        }
+
+        &:focus-visible {
+            border-radius: math.div(vars.$core-size, 8);
+            outline-color: var(--ngxb-color-focus-outline);
+            outline-offset: math.div(vars.$core-size, 8);
+            outline-style: solid;
+            outline-width: math.div(vars.$core-size, 8);
         }
 
         input[type=checkbox] {

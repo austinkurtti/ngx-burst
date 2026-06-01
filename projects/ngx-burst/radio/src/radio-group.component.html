@@ -4,9 +4,10 @@
 
 <div class="options">
     @for (opt of options(); track opt.value) {
-        <label [class.disabled]="disabled()">
+        <label [tabindex]="disabled() ? -1 : 0" [class.disabled]="disabled()" (keydown.enter)="selectOption(opt.value)">
             <!-- Fake radio -->
             <input type="radio"
+                tabindex="-1"
                 [name]="name()"
                 [value]="opt.value"
                 [checked]="selectedValue === opt.value"
