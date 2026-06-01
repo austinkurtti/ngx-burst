@@ -30,6 +30,7 @@
         input {
             border-radius: math.div(vars.$core-size, 4);
             border-style: solid;
+            border-width: math.div(vars.$core-size, 8);
             font-size: vars.$font-size;
             overflow: hidden !important;
             padding: math.div(vars.$core-size, 2) math.div(vars.$core-size, 4);
