@@ -33,7 +33,7 @@ try {
 
     // Update package.json
     packageJson.version = newVersion;
-    fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2) + '\n');
+    fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2).replace(/\n/g, '\r\n') + '\r\n');
     console.log(`✓ Updated version: ${currentVersion} → ${newVersion}`);
 
     // Stage the change
