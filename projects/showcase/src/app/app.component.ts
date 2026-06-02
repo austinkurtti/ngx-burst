@@ -1,17 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgxbAccordionContentDirective, NgxbAccordionGroupDirective, NgxbAccordionHeaderDirective } from '@austinkurtti/ngx-burst/accordion';
+import { NgxbButtonDirective, NgxbButtonType } from '@austinkurtti/ngx-burst/button';
+import { NgxbCheckboxComponent } from '@austinkurtti/ngx-burst/checkbox';
+import { NgxbDialogOpenerDirective, NgxbDialogService, NgxbDialogSize } from '@austinkurtti/ngx-burst/dialog';
+import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from '@austinkurtti/ngx-burst/menu';
+import { NgxbRadioGroupComponent, NgxbRadioOption } from '@austinkurtti/ngx-burst/radio';
+import { NgxbSelectComponent, NgxbSelectOption } from '@austinkurtti/ngx-burst/select';
+import { NgxbTextComponent } from '@austinkurtti/ngx-burst/text';
+import { NgxbToggleComponent } from '@austinkurtti/ngx-burst/toggle';
+import { NgxbTooltipDirective, NgxbTooltipPosition } from '@austinkurtti/ngx-burst/tooltip';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { NgxbAccordionContentDirective, NgxbAccordionGroupDirective, NgxbAccordionHeaderDirective } from 'ngx-burst/accordion';
-import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
-import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
-import { NgxbDialogOpenerDirective, NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
-import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from 'ngx-burst/menu';
-import { NgxbRadioGroupComponent, NgxbRadioOption } from 'ngx-burst/radio';
-import { NgxbSelectComponent, NgxbSelectOption } from 'ngx-burst/select';
-import { NgxbTextComponent } from 'ngx-burst/text';
-import { NgxbToggleComponent } from "ngx-burst/toggle";
-import { NgxbTooltipDirective, NgxbTooltipPosition } from 'ngx-burst/tooltip';
 import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
 
 @Component({

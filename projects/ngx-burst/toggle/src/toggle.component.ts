@@ -1,6 +1,6 @@
 import { Component, EventEmitter, input, model, OnInit, Output } from '@angular/core';
+import { NgxbTooltipDirective } from '@austinkurtti/ngx-burst/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxbTooltipDirective } from 'ngx-burst/tooltip';
 
 @Component({
     selector: 'ngxb-toggle',

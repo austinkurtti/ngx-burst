@@ -6,10 +6,10 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
-      "ngx-burst/*" : [
+      "@austinkurtti/ngx-burst/*" : [
         "./../../dist/ngx-burst/*"
       ],
-      "ngx-burst": [
+      "@austinkurtti/ngx-burst": [
         "./../../dist/ngx-burst"
       ]
     }

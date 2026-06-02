@@ -13,7 +13,7 @@ npm install @austinkurtti/ngx-burst
 In order to properly initialize each Directive/Component in the library, add the `provideNgxBurst()` function to the providers array in the app's root `ApplicationConfig`. Without this, some controls may not work or appear as expected.
 
 ```ts
-import { provideNgxBurst } from 'ngx-burst/core';
+import { provideNgxBurst } from '@austinkurtti/ngx-burst/core';
 
 ...
 
@@ -28,10 +28,10 @@ bootstrapApplication(AppComponent, {
 
 ### Use
 
-Every Directive and Component is standalone. Simply add the needed classes into the imports array of the Module or standalone Component using them. Related Directives and Components will come from the same namespace. For example, all Accordion Directives can be imported from the `ngx-burst/accordion` namespace.
+Every Directive and Component is standalone. Simply add the needed classes into the imports array of the Module or standalone Component using them. Related Directives and Components will come from the same namespace. For example, all Accordion Directives can be imported from the `@austinkurtti/ngx-burst/accordion` namespace.
 
 ```ts
-import { NgxbButtonDirective } from 'ngx-burst/button';
+import { NgxbButtonDirective } from '@austinkurtti/ngx-burst/button';
 
 ...
 
@@ -48,7 +48,7 @@ import { NgxbButtonDirective } from 'ngx-burst/button';
 Directives and Components will be unstyled by default, but ngx-burst does provide theme mixins to allow customization. You can include the base theme to apply styles application-wide or component-specific themes for more control. Note that the component-specific theme mixins are _not_ reliant on the base theme.
 
 ```scss
-@use 'ngx-burst' as ngxb;
+@use '@austinkurtti/ngx-burst' as ngxb;
 
 ...
 

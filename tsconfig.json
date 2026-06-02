@@ -10,10 +10,10 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "ngx-burst/*": [
+      "@austinkurtti/ngx-burst/*": [
         "./projects/ngx-burst/*"
       ],
-      "ngx-burst": [
+      "@austinkurtti/ngx-burst": [
         "./projects/ngx-burst"
       ]
     },

@@ -1,8 +1,8 @@
 import { Component, forwardRef, input, model, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgxbButtonDirective } from '@austinkurtti/ngx-burst/button';
+import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuWidth } from '@austinkurtti/ngx-burst/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxbButtonDirective } from 'ngx-burst/button';
-import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuWidth } from 'ngx-burst/menu';
 import { NgxbSelectOption } from './select-option';
 
 @Component({
