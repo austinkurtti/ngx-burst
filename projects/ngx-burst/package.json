@@ -1,6 +1,9 @@
 {
-  "name": "ngx-burst",
+  "name": "@austinkurtti/ngx-burst",
   "version": "0.0.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "peerDependencies": {
     "@angular/common": "^21.2.12",
     "@angular/core": "^21.2.12",

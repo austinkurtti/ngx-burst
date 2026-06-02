@@ -1,15 +1,13 @@
 {
-  "name": "@austinkurtti/ngx-burst",
+  "name": "ngx-burst",
   "version": "0.0.0",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
     "start": "npm-run-all clean --parallel lib:watch showcase:start-waiton",
     "lib:watch": "ng build ngx-burst --watch --configuration development",
     "showcase:start-waiton": "wait-on dist/ngx-burst/package.json && npm run showcase:start",
     "showcase:start": "ng serve showcase",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "publish": "npm run clean && ng build ngx-burst && cd projects/ngx-burst && npm publish"
   },
   "private": true,
   "dependencies": {
