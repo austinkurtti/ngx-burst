@@ -67,6 +67,13 @@
                 &:active {
                     background-color: var(--ngxb-menu-item-color-background-active);
                 }
+
+                &:focus-visible {
+                    outline-color: var(--ngxb-color-focus-outline);
+                    outline-offset: math.div(vars.$core-size, -8);
+                    outline-style: solid;
+                    outline-width: math.div(vars.$core-size, 8);
+                }
             }
 
             &:first-child {

@@ -1,4 +1,4 @@
-import { Directive, HostListener, inject, input, output } from '@angular/core';
+import { Directive, inject, input, output } from '@angular/core';
 import { NgxbMenuDirective } from './menu.directive';
 
 @Directive({
@@ -6,7 +6,9 @@ import { NgxbMenuDirective } from './menu.directive';
     host: {
         'role': 'menuitem',
         'tabindex': '0',
-        '[class.disabled]': 'disabled()'
+        '[class.disabled]': 'disabled()',
+        '(click)': 'itemClick($event)',
+        '(keydown)': 'itemKeydown($event)'
     }
 })
 export class NgxbMenuItemDirective {
@@ -16,10 +18,30 @@ export class NgxbMenuItemDirective {
 
     public menu = inject(NgxbMenuDirective);
 
-    @HostListener('click', ['$event']) itemClick(event: PointerEvent): void {
+    public itemClick(event: PointerEvent): void {
+        this._doClick();
+    }
+
+    public itemKeydown(event: KeyboardEvent): void {
+        if (event.code === 'ArrowDown') {
+            event.preventDefault();
+            this.menu.focusNext();
+        } else if (event.code === 'ArrowUp') {
+            event.preventDefault();
+            this.menu.focusNext(false);
+        } else if (event.code === 'Tab' || event.code === 'Escape') {
+            event.preventDefault();
+            this.menu.close(true);
+        } else if (event.code === 'Space' || event.code === 'Enter') {
+            event.preventDefault();
+            this._doClick(true);
+        }
+    }
+
+    private _doClick(refocusHost = false): void {
         if (!this.disabled()) {
             this.menuItemClick.emit();
-            this.menu.close();
+            this.menu.close(refocusHost);
         }
     }
 }

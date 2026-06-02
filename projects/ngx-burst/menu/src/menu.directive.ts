@@ -1,26 +1,20 @@
-import { Directive, ElementRef, HostListener, Renderer2, TemplateRef, ViewContainerRef, computed, contentChild, inject, input, output, signal } from '@angular/core';
+import { Directive, ElementRef, Renderer2, TemplateRef, ViewContainerRef, computed, contentChild, inject, input, output, signal } from '@angular/core';
 import { NgxbMenuPosition, NgxbMenuWidth } from './menu-settings';
 
 const BODY_TAG_NAME = 'BODY';
 
 /**
- * TODO:
+ * TODO
  * - Add ARIA attributes
- * - Keyboard nav
- *      - When focused on host
- *          - Enter, space, and down arrow should open menu and autofocus first focusable element
- *          - Tab should not open menu
- *      - When focused in menu
- *          - Up/down arrow should focus next focusable element, with focus wrapping between first and last elements
- *          - Tab and escape should close the menu and refocus the host
- *          - Enter and space should click element and close menu 
  */
 @Directive({
     selector: '[ngxbMenu]',
     exportAs: 'ngxbMenu',
     host: {
         'tabindex': '0',
-        'class': 'menu-host'
+        'class': 'menu-host',
+        '(click)': 'hostClick($event)',
+        '(keydown)': 'hostKeydown($event)'
     }
 })
 export class NgxbMenuDirective {
@@ -33,7 +27,7 @@ export class NgxbMenuDirective {
      * does not need to worry about inherting unwanted styles from a the host, and the host doesn't need to worry about
      * having hover styles activated by the content (which would put the responsibility on the implementer to negate that).
      * 
-     * TODO:
+     * TODO
      * Could look into possibly changing this to a direct <ng-template> element with ngxbMenuContent attached to it, then
      * inserting and managing a wrapper div around the template content.
      */
@@ -48,9 +42,11 @@ export class NgxbMenuDirective {
     private _renderer = inject(Renderer2);
 
     private _isOpen = signal(false);
+    private _menuEl: any;
+    // TODO - probably add more to this
+    private _focusableSelectors = ['[ngxbmenuitem]:not(.disabled)'];
 
-    @HostListener('click', ['$event'])
-    hostClick(event: KeyboardEvent | PointerEvent): void {
+    public hostClick(event: PointerEvent): void {
         if (this._isOpen()) {
             this.close();
         } else {
@@ -63,8 +59,16 @@ export class NgxbMenuDirective {
         }
     }
 
+    public hostKeydown(event: KeyboardEvent): void {
+        if (event.code === 'ArrowDown' || event.code === 'Space' || event.code === 'Enter') {
+            event.preventDefault();
+            this.open();
+            this.focusNext();
+        }
+    }
+
     public open = (): void => {
-        if (this.menuContent() === undefined) {
+        if (this._isOpen() || this.menuContent() === undefined) {
             return;
         }
 
@@ -75,6 +79,7 @@ export class NgxbMenuDirective {
         // Size the menu - this must be done before positioning
         const hostRect = this._elementRef.nativeElement.getBoundingClientRect();
         const menuEl = menu.rootNodes[0];
+        this._menuEl = menuEl;
         if (this.menuWidth() === NgxbMenuWidth.matchParent) {
             this._renderer.setStyle(menuEl, 'width', `${hostRect.width}px`);
         } else {
@@ -113,13 +118,38 @@ export class NgxbMenuDirective {
         this.isOpenChanged.emit(this.isOpen());
     };
 
-    public close = (): void => {
+    public close = (refocusHost = false): void => {
+        this._menuEl = null;
         this._viewContainerRef.clear();
         this._isOpen.set(false);
         this.isOpenChanged.emit(this.isOpen());
+
+        if (refocusHost) {
+            this._elementRef.nativeElement.focus();
+        }
     };
 
     public containsEventTarget = (target: EventTarget): boolean => this._elementRef.nativeElement.contains(target);
+
+    public focusNext = (forwards = true): void => {
+        const focusableElements: HTMLElement[] = Array.from(this._menuEl.querySelectorAll(this._focusableSelectors));
+        if (focusableElements.length === 0) {
+            return;
+        }
+
+        const focusedFocusableElIndex = focusableElements.findIndex(e => e === document.activeElement);
+        if (focusedFocusableElIndex === -1) {
+            focusableElements[0].focus();
+        } else {
+            let nextFocusableElIndex = focusedFocusableElIndex + (forwards ? 1 : -1);
+            if (nextFocusableElIndex === focusableElements.length) {
+                nextFocusableElIndex = 0;
+            } else if (nextFocusableElIndex === -1) {
+                nextFocusableElIndex = focusableElements.length - 1;
+            }
+            focusableElements[nextFocusableElIndex].focus();
+        }
+    }
 
     private _positionedAt = (position: NgxbMenuPosition): boolean => (this.menuPosition() & position) !== 0;
 
