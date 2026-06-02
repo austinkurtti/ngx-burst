@@ -32,7 +32,7 @@ export class NgxbMenuItemDirective {
         } else if (event.code === 'Tab' || event.code === 'Escape') {
             event.preventDefault();
             this.menu.close(true);
-        } else if (event.code === 'Space' || event.code === 'Enter') {
+        } else if (event.code === 'Space' || event.code === 'Enter' || event.code === 'NumpadEnter') {
             event.preventDefault();
             this._doClick(true);
         }

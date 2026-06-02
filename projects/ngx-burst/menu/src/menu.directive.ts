@@ -60,7 +60,7 @@ export class NgxbMenuDirective {
     }
 
     public hostKeydown(event: KeyboardEvent): void {
-        if (event.code === 'ArrowDown' || event.code === 'Space' || event.code === 'Enter') {
+        if (event.code === 'ArrowDown' || event.code === 'Space' || event.code === 'Enter' || event.code === 'NumpadEnter') {
             event.preventDefault();
             this.open();
             this.focusNext();
