@@ -5,7 +5,7 @@ import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { NgxbAccordionContentDirective, NgxbAccordionGroupDirective, NgxbAccordionHeaderDirective } from 'ngx-burst/accordion';
 import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
 import { NgxbCheckboxComponent } from 'ngx-burst/checkbox';
-import { NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
+import { NgxbDialogOpenerDirective, NgxbDialogService, NgxbDialogSize } from 'ngx-burst/dialog';
 import { NgxbMenuContentDirective, NgxbMenuDirective, NgxbMenuItemDirective, NgxbMenuPosition, NgxbMenuWidth } from 'ngx-burst/menu';
 import { NgxbRadioGroupComponent, NgxbRadioOption } from 'ngx-burst/radio';
 import { NgxbSelectComponent, NgxbSelectOption } from 'ngx-burst/select';
@@ -25,6 +25,7 @@ import { ExampleDialogComponent } from './example-dialog/example-dialog.componen
         NgxbAccordionHeaderDirective,
         NgxbButtonDirective,
         NgxbCheckboxComponent,
+        NgxbDialogOpenerDirective,
         NgxbMenuContentDirective,
         NgxbMenuDirective,
         NgxbMenuItemDirective,
@@ -96,11 +97,11 @@ export class AppComponent {
         this.dialogSize = parseInt((<HTMLSelectElement>(event.target)).value);
     }
 
-    public openDialog(): void {
+    public openDialog = (): void => {
         const dialogRef = this._dialogService.show(ExampleDialogComponent, this.dialogSize);
         if (dialogRef) {
             dialogRef.instance.closeCallback = () => {
-                console.log('Dialog closed');
+                console.log('closeCallback - Dialog closed');
             }
         }
     }

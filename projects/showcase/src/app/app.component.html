@@ -91,7 +91,7 @@
     <h2 class="mb-3">Dialog</h2>
     <div class="row g-0">
         <div class="col-auto d-flex">
-            <button ngxbButton (click)="openDialog()">Open dialog</button>
+            <button ngxbButton ngxbDialogOpener [openDialog]="openDialog">Open dialog</button>
             <ngxb-select class="ms-3" style="min-width: 300px" inputId="choose-dialog-size" placeholder="Choose a size" [options]="dialogSizeOptions" [(ngModel)]="dialogSize"></ngxb-select>
         </div>
     </div>

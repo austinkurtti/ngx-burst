@@ -6,12 +6,15 @@ import { NgxbDialogDirective } from './dialog.directive';
     providedIn: 'root'
 })
 export class NgxbDialogService {
+    public focusVisibleOnOpen = false;
+
     private _appRef = inject(ApplicationRef);
     private _renderer = inject(RendererFactory2).createRenderer(null, null);
 
     private _open = false;
     private _dialogRef!: ComponentRef<any>;
     private _unlisteners = new Array<() => void>();
+    private _previousFocusedEl: HTMLElement | null = null;
 
     private get _dialogEl(): HTMLDialogElement {
         let el = document.querySelector('#ngxb-dialog');
@@ -38,6 +41,8 @@ export class NgxbDialogService {
         if (this._open) {
             return null;
         }
+
+        this._previousFocusedEl = <HTMLElement>document.activeElement;
 
         this._open = true;
         this._dialogEl.show();
@@ -66,11 +71,12 @@ export class NgxbDialogService {
         return dialogRef;
     }
 
-    public close(): void {
+    public close(refocusPrevious = false): void {
         if (!this._open) {
             return;
         }
 
+        this.focusVisibleOnOpen = false;
         this._dialogRef.instance.closeCallback?.();
 
         // Destroy injected component
@@ -84,10 +90,20 @@ export class NgxbDialogService {
         this._renderer.removeAttribute(this._dialogEl, 'class');
         this._dialogEl.close();
         this._open = false;
+
+        if (refocusPrevious) {
+            this._previousFocusedEl?.focus();
+        }
     }
 
     public initDialogFocus(): void {
-        this._dialogEl.focus();
+        if (this.focusVisibleOnOpen && this._tabbableEls.length > 0) {
+            // Immediately focus first tabbable element to preserve keyboard continuity
+            this._tabbableEls[0].focus();
+        } else {
+            // Focus the dialog element to impose lock tab in the future
+            this._dialogEl.focus();
+        }
     }
 
     private _checkTabLock = (e: KeyboardEvent): void => {
@@ -111,7 +127,7 @@ export class NgxbDialogService {
 
     private _checkEscape = (e: KeyboardEvent): void => {
         if (e.code === 'Escape') {
-            this.close();
+            this.close(true);
         }
     };
 }

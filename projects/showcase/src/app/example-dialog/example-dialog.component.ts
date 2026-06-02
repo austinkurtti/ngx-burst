@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgxbButtonDirective, NgxbButtonType } from 'ngx-burst/button';
-import { NgxbDialogActionsDirective, NgxbDialogBodyDirective, NgxbDialogDirective, NgxbDialogHeaderDirective } from 'ngx-burst/dialog';
+import { NgxbDialogActionsDirective, NgxbDialogBodyDirective, NgxbDialogCloserDirective, NgxbDialogDirective, NgxbDialogHeaderDirective } from 'ngx-burst/dialog';
 
 @Component({
     selector: 'app-example-dialog',
@@ -9,6 +9,7 @@ import { NgxbDialogActionsDirective, NgxbDialogBodyDirective, NgxbDialogDirectiv
         NgxbButtonDirective,
         NgxbDialogActionsDirective,
         NgxbDialogBodyDirective,
+        NgxbDialogCloserDirective,
         NgxbDialogHeaderDirective
     ]
 })
