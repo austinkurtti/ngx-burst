@@ -10,7 +10,7 @@
     "bump:major": "node scripts/bump-version.js major",
     "bump:minor": "node scripts/bump-version.js minor",
     "bump:patch": "node scripts/bump-version.js patch",
-    "publish": "npm run clean && ng build ngx-burst && cd projects/ngx-burst && npm publish"
+    "publish": "npm run clean && ng build ngx-burst && cd dist/ngx-burst && npm publish"
   },
   "private": true,
   "dependencies": {
