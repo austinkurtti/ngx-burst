@@ -3,5 +3,10 @@
     "dest": "../../dist/ngx-burst",
     "lib": {
         "entryFile": "public-api.ts"
-    }
+    },
+    "assets": [
+        "_index.scss",
+        "src/styles/*.scss",
+        "**/src/_styles.scss"
+    ]
 }
