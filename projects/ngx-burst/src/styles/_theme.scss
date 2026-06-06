@@ -1,61 +1,12 @@
-@use 'sass:color';
 @use 'sass:string';
 
-@use './variables' as vars;
-@use './functions' as fns;
-
-$config: (
-    'color-background': vars.$color-white,
-    'color-on-background': vars.$color-black,
-    'color-background-secondary': vars.$color-ivory,
-    'color-on-background-secondary': vars.$color-slate,
-    'color-background-tertiary': vars.$color-gray-100,
-    'color-on-background-tertiary': vars.$color-slate,
-
-    'color-primary': vars.$color-blue,
-    'color-primary-hover': color.adjust(vars.$color-blue, $lightness: 10%),
-    'color-primary-active': color.adjust(vars.$color-blue, $lightness: 20%),
-    'color-on-primary': fns.adjust-to-contrast(vars.$color-blue, vars.$color-blue),
-    'color-positive': vars.$color-green,
-    'color-positive-hover': color.adjust(vars.$color-green, $lightness: 10%),
-    'color-positive-active': color.adjust(vars.$color-green, $lightness: 20%),
-    'color-on-positive': fns.adjust-to-contrast(vars.$color-green, vars.$color-green),
-    'color-negative': vars.$color-red,
-    'color-negative-hover': color.adjust(vars.$color-red, $lightness: 10%),
-    'color-negative-active': color.adjust(vars.$color-red, $lightness: 20%),
-    'color-on-negative': fns.adjust-to-contrast(vars.$color-red, vars.$color-red),
-    'color-warning': vars.$color-gold,
-    'color-on-warning': vars.$color-black,
-    'color-disabled': vars.$color-gray-300,
-    'color-on-disabled': fns.adjust-to-contrast(vars.$color-gray-300, vars.$color-gray-300),
-    'color-placeholder': vars.$color-gray-600,
-    'color-focus-outline': color.adjust(vars.$color-blue, $lightness: 20%),
-
-    'font-family': vars.$font-family,
-    'font-size': vars.$font-size
-);
-
-@mixin def($collection: '', $overrides: ()) {
+// This mixin is used to define a set of css vars with the given collection prefix
+@mixin def($collection: '', $config) {
     @if string.length($collection) > 0 {
         $collection: $collection + '-';
     }
 
-    $theme: map-merge($config, $overrides);
-    @each $property, $value in $theme {
+    @each $property, $value in $config {
         --ngxb-#{$collection}#{$property}: #{$value};
     }
 }
-
-// $bg-color-primary: var(--ngxb-background-color-primary);
-// $bg-color-secondary: var(--ngxb-backgroundc-color-secondary);
-
-// $color-primary: var(--ngxb-color-primary);
-// $color-secondary: var(--ngxb-color-secondary);
-// $color-success: var(--ngxb-color-success);
-// $color-error: var(--ngxb-color-error);
-// $color-warning: var(--ngxb-color-warning);
-
-// $font-color-primary: var(--ngxb-font-color-primary);
-// $font-color-secondary: var(--ngxb-font-color-secondary);
-// $font-family: var(--ngxb-font-family);
-// $font-size: var(--ngxb-font-size);

@@ -2,10 +2,6 @@
 
 @use '@austinkurtti/ngx-burst' as ngxb;
 
-h1, h2, h3, h4, h5 {
-    margin: 0;
-}
-
 header {
     background-color: ngxb.$color-ivory;
 }

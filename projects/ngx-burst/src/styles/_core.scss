@@ -1,14 +1,138 @@
+@use 'sass:color';
 @use 'sass:map';
 
 @use './theme';
+@use './variables' as vars;
+@use './functions' as fns;
 
+$core-config: (
+    'unit': vars.$core-size,
+    'breakpoint-sm': vars.$breakpoint-sm,
+    'breakpoint-md': vars.$breakpoint-md,
+    'breakpoint-lg': vars.$breakpoint-lg,
+    'breakpoint-xl': vars.$breakpoint-xl,
+    'breakpoint-xxl': vars.$breakpoint-xxl,
+
+    'color-background': vars.$color-white,
+    'color-on-background': vars.$color-black,
+    'color-background-secondary': vars.$color-ivory,
+    'color-on-background-secondary': vars.$color-slate,
+    'color-background-tertiary': vars.$color-gray-100,
+    'color-on-background-tertiary': vars.$color-slate,
+
+    'color-primary': vars.$color-blue,
+    'color-primary-hover': color.adjust(vars.$color-blue, $lightness: 10%),
+    'color-primary-active': color.adjust(vars.$color-blue, $lightness: 20%),
+    'color-on-primary': fns.adjust-to-contrast(vars.$color-blue, vars.$color-blue),
+    'color-positive': vars.$color-green,
+    'color-positive-hover': color.adjust(vars.$color-green, $lightness: 10%),
+    'color-positive-active': color.adjust(vars.$color-green, $lightness: 20%),
+    'color-on-positive': fns.adjust-to-contrast(vars.$color-green, vars.$color-green),
+    'color-negative': vars.$color-red,
+    'color-negative-hover': color.adjust(vars.$color-red, $lightness: 10%),
+    'color-negative-active': color.adjust(vars.$color-red, $lightness: 20%),
+    'color-on-negative': fns.adjust-to-contrast(vars.$color-red, vars.$color-red),
+    'color-warning': vars.$color-gold,
+    'color-on-warning': vars.$color-black,
+    'color-disabled': vars.$color-gray-300,
+    'color-on-disabled': fns.adjust-to-contrast(vars.$color-gray-300, vars.$color-gray-300),
+    'color-placeholder': vars.$color-gray-600,
+    'color-focus-outline': color.adjust(vars.$color-blue, $lightness: 20%),
+
+    'font-family': vars.$font-family,
+    'font-size': vars.$font-size
+);
+
+// Defines the base set of ngx-burst css vars
 @mixin theme($overrides: ()) {
+    $final-config: map-merge($core-config, $overrides);
     :root {
-        @include theme.def('', $overrides);
+        @include theme.def('', $final-config);
+    }
+}
+
+// Defines some element-specific style resets to help normalize appearance/behavior across browsers
+// * Guidelines:
+// - use rems instead of ems
+// - no margin-top
+// - no margin-bottom, except for headers (their use implies something under them)
+@mixin reset($overrides: ()) {
+    *, *::before, *::after {
+        box-sizing: border-box;
     }
 
     html {
+        scroll-behavior: smooth;
+    }
+
+    body {
         background-color: var(--ngxb-color-background);
         color: var(--ngxb-color-on-background);
+        display: block;
+        font-family: system-ui, sans-serif;
+        font-size: var(--ngxb-unit);
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
+
+    h1 {
+        margin-bottom: calc(var(--ngxb-unit) * 2);
+    }
+
+    h2 {
+        margin-bottom: var(--ngxb-unit);
+    }
+
+    h3, h4, h5, h6 {
+        margin-bottom: calc(var(--ngxb-unit) / 2);
+    }
+
+    p {
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    a {
+        color: var(--ngxb-color-primary);
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--ngxb-color-primary-hover);
+        }
+
+        &:active {
+            color: var(--ngxb-color-primary-active);
+        }
+
+        &:focus-visible {
+            border-radius: calc(var(--ngxb-unit) / 8);
+            outline-color: var(--ngxb-color-focus-outline);
+            outline-offset: calc(var(--ngxb-unit) / 8);
+            outline-style: solid;
+            outline-width: calc(var(--ngxb-unit) / 8);
+        }
+    }
+
+    ul, ol {
+        line-height: 1.5;
+        margin: 0;
+        padding-left: calc(var(--ngxb-unit) * 1.5);
+
+        &.no-style-type {
+            list-style-type: none;
+        }
+    }
+
+    kbd {
+        background-color: var(--ngxb-color-background-tertiary);
+        color: var(--ngxb-color-on-background-tertiary);
+        border-radius: calc(var(--ngxb-unit) / 4);
+        padding: calc(var(--ngxb-unit) / 8) calc(var(--ngxb-unit) / 4);
     }
 }

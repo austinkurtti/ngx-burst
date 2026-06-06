@@ -1,6 +1,7 @@
 @use '@austinkurtti/ngx-burst' as ngxb;
 
 @include ngxb.theme();
+@include ngxb.reset();
 
 @include ngxb.accordion-theme();
 @include ngxb.button-theme();
@@ -12,20 +13,3 @@
 @include ngxb.text-theme();
 @include ngxb.toggle-theme();
 @include ngxb.tooltip-theme();
-
-html {
-    font-family: sans-serif;
-    height: 100%;
-    scroll-behavior: smooth;
-
-    body {
-        height: 100%;
-        margin: 0;
-    }
-
-    kbd {
-        background-color: lightgray;
-        border-radius: 4px;
-        padding: 2px;
-    }
-}
