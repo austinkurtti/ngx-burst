@@ -71,7 +71,7 @@
                 transition-duration: vars.$color-transition-duration;
                 transition-property: background-color;
                 transition-timing-function: vars.$transition-timing-function;
-                width: vars.$core-size * 4;
+                width: vars.$core-size * 5;
 
                 @media (prefers-reduced-motion) {
                     transition: none;
