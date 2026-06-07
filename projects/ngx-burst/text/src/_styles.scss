@@ -54,7 +54,7 @@
         }
 
         label {
-            margin-bottom: math.div(vars.$core-size, 4);
+            padding-bottom: math.div(vars.$core-size, 4);
         }
 
         input {
