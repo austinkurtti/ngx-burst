@@ -1,9 +1,76 @@
-## Generating component under sub entry point
+# ngx-burst
 
-To generate a new component in it's own sub entry point of the ngx-burst library, run:
+## Get Started
+
+### Install
 
 ```bash
-ng generate component component-name --flat --path projects/ngx-burst/component-name/src
+npm install @austinkurtti/ngx-burst
 ```
 
-Omit the `--flat` option if you want to create a subfolder. This is useful when the sub entry point already has a lot of existing components.
+### Provide
+
+In order to properly initialize each Directive/Component in the library, add the `provideNgxBurst()` function to the providers array in the app's root `ApplicationConfig`. Without this, some controls may not work or appear as expected.
+
+```ts
+import { provideNgxBurst } from '@austinkurtti/ngx-burst/core';
+
+...
+
+bootstrapApplication(AppComponent, {
+    ...
+    providers: [
+        ...
+        provideNgxBurst()
+    ]
+})
+```
+
+### Use
+
+Every Directive and Component is standalone. Simply add the needed classes into the imports array of the Module or standalone Component using them. Related Directives and Components will come from the same namespace. For example, all Accordion Directives can be imported from the `@austinkurtti/ngx-burst/accordion` namespace.
+
+```ts
+import { NgxbButtonDirective } from '@austinkurtti/ngx-burst/button';
+
+...
+
+@Component({
+	...
+    imports: [
+        NgxbButtonDirective
+    ]
+})
+```
+
+### Style
+
+Directives and Components will be unstyled by default, but ngx-burst does provide theme mixins to allow customization. You can include the base theme to apply styles application-wide or component-specific themes for more control. Note that the component-specific theme mixins are _not_ reliant on the base theme.
+
+```scss
+@use '@austinkurtti/ngx-burst' as ngxb;
+
+...
+
+@include ngxb.theme();
+
+@include ngxb.accordion-theme();
+@include ngxb.button-theme();
+```
+
+Theme mixins also accept an override map, allowing precision customization of individual styles.
+
+```scss
+// Overriding the top level theme will customize the base styles for the whole library
+@include ngxb.theme((
+    'color-primary': 'red'
+));
+
+// Overriding a component-specific theme will customize the styles for just that component
+@include ngxb.button-theme((
+    'color-primary': 'green'
+));
+```
+
+> [!NOTE]
+> Component-specific theme mixins are _not_ reliant on the base theme. They can be used independently without the base theme ever being included.
