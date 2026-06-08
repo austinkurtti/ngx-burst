@@ -78,18 +78,37 @@ $core-config: (
     }
 
     h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
         margin-top: 0;
     }
 
     h1 {
+        font-size: calc(var(--ngxb-unit) * 2.5);
         margin-bottom: calc(var(--ngxb-unit) * 2);
     }
 
     h2 {
+        font-size: calc(var(--ngxb-unit) * 2);
         margin-bottom: var(--ngxb-unit);
     }
 
-    h3, h4, h5, h6 {
+    h3 {
+        font-size: calc(var(--ngxb-unit) * 1.75);
+        margin-bottom: calc(var(--ngxb-unit) / 2);
+    }
+
+    h4 {
+        font-size: calc(var(--ngxb-unit) * 1.5);
+        margin-bottom: calc(var(--ngxb-unit) / 2);
+    }
+
+    h5 {
+        font-size: calc(var(--ngxb-unit) * 1.25);
+        margin-bottom: calc(var(--ngxb-unit) / 2);
+    }
+
+    h6 {
+        font-size: var(--ngxb-unit);
         margin-bottom: calc(var(--ngxb-unit) / 2);
     }
 
