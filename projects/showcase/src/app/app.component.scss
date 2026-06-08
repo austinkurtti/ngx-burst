@@ -18,6 +18,10 @@ section {
         padding-bottom: ngxb.$core-size * 4;
     }
 
+    > h2 {
+        color: var(--ngxb-color-primary);
+    }
+
     &#tooltip {
         div[ngxbtooltip] {
             border: 1px solid ngxb.$color-black;
