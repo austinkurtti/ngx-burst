@@ -78,6 +78,7 @@ export class AppComponent {
     ];
     public selectDisabledValue = 'third';
     public textValue = 'Lorem ipsum';
+    public toggleValue = true;
     public tooltipEnabled = false;
 
     public ButtonType = NgxbButtonType;
