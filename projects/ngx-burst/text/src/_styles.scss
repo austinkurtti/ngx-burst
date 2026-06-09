@@ -64,6 +64,7 @@
             border-style: solid;
             border-width: math.div(vars.$core-size, 8);
             box-sizing: border-box;
+            font-family: inherit;
             font-size: vars.$font-size;
             height: vars.$core-size * 2;
             overflow: hidden !important;

@@ -45,6 +45,7 @@
         border-style: solid;
         border-width: math.div(vars.$core-size, 8);
         display: inline-block;
+        font-family: inherit;
         font-weight: bold;
         height: vars.$core-size * 2;
         padding-block: math.div(vars.$core-size, 8);
