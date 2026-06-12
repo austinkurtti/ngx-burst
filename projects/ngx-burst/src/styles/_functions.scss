@@ -1,5 +1,7 @@
 @use 'sass:color';
 
+@use './variables' as vars;
+
 // WCAG formula for channel linearization as part of luminance
 // if   v < 0.03928, v / 12.92
 // else ((v + 0.055) / 1.055)^2.4
@@ -72,4 +74,15 @@
     @else {
         @return $dark;
     }
+}
+
+// Returns either black or white, whichever has better contrast ratio against the given background color
+@function best-foreground-contrast($background) {
+    $black: vars.$color-black;
+    $white: vars.$color-white;
+
+    $black-contrast: contrast-ratio($black, $background);
+    $white-contrast: contrast-ratio($white, $background);
+
+    @return if($black-contrast > $white-contrast, $black, $white);
 }

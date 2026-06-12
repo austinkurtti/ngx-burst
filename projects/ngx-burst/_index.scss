@@ -1,6 +1,7 @@
 // Core
 @forward './src/styles/variables';
 @forward './src/styles/functions';
+@forward './src/styles/mixins';
 @forward './src/styles/core' show theme, reset;
 
 // Components/Directives
