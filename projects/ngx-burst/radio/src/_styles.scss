@@ -67,14 +67,6 @@
                     margin-left: vars.$core-size;
                 }
 
-                &:focus-visible {
-                    border-radius: math.div(vars.$core-size, 8);
-                    outline-color: var(--ngxb-color-focus-outline);
-                    outline-offset: math.div(vars.$core-size, 8);
-                    outline-style: solid;
-                    outline-width: math.div(vars.$core-size, 8);
-                }
-
                 fa-icon {
                     color:  var(--ngxb-radio-color-unchecked);
                     transition-duration: vars.$color-transition-duration;

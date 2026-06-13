@@ -46,14 +46,6 @@
             }
         }
 
-        &:focus-visible {
-            border-radius: math.div(vars.$core-size, 8);
-            outline-color: var(--ngxb-color-focus-outline);
-            outline-offset: math.div(vars.$core-size, 8);
-            outline-style: solid;
-            outline-width: math.div(vars.$core-size, 8);
-        }
-
         input[type=checkbox] {
             height: 0;
             margin: 0;

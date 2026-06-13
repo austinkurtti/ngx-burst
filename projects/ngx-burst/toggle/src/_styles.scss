@@ -54,14 +54,6 @@
                 }
             }
 
-            &:focus-visible {
-                border-radius: math.div(vars.$core-size, 8);
-                outline-color: var(--ngxb-color-focus-outline);
-                outline-offset: math.div(vars.$core-size, 8);
-                outline-style: solid;
-                outline-width: math.div(vars.$core-size, 8);
-            }
-
             .toggle-background {
                 align-items: center;
                 border-radius: vars.$core-size;

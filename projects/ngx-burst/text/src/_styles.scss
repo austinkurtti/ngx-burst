@@ -79,10 +79,8 @@
             }
 
             &:focus-visible {
-                outline-color: var(--ngxb-color-focus-outline);
-                outline-offset: math.div(vars.$core-size, -8);
-                outline-style: solid;
-                outline-width: math.div(vars.$core-size, 8);
+                border-radius: calc(var(--ngxb-unit) / 4);
+                outline-offset: calc(var(--ngxb-unit) / -8);
             }
         }
     }
